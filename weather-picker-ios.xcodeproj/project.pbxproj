@@ -36,6 +36,10 @@
 		849173E32C47996F003766B0 /* CABasicAnimation+animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173E22C47996F003766B0 /* CABasicAnimation+animations.swift */; };
 		849173E52C47C103003766B0 /* UIApplication+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173E42C47C103003766B0 /* UIApplication+helpers.swift */; };
 		849173E72C47C11B003766B0 /* UIWindowScene+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173E62C47C11B003766B0 /* UIWindowScene+helpers.swift */; };
+		849173EA2C480C62003766B0 /* CrescentMoonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173E92C480C62003766B0 /* CrescentMoonView.swift */; };
+		849173EC2C480D18003766B0 /* ClearNightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173EB2C480D18003766B0 /* ClearNightView.swift */; };
+		849173EE2C481777003766B0 /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173ED2C481777003766B0 /* StarView.swift */; };
+		849173F02C483777003766B0 /* CAKeyframeAnimation+animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173EF2C483777003766B0 /* CAKeyframeAnimation+animations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +74,10 @@
 		849173E22C47996F003766B0 /* CABasicAnimation+animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CABasicAnimation+animations.swift"; sourceTree = "<group>"; };
 		849173E42C47C103003766B0 /* UIApplication+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+helpers.swift"; sourceTree = "<group>"; };
 		849173E62C47C11B003766B0 /* UIWindowScene+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindowScene+helpers.swift"; sourceTree = "<group>"; };
+		849173E92C480C62003766B0 /* CrescentMoonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrescentMoonView.swift; sourceTree = "<group>"; };
+		849173EB2C480D18003766B0 /* ClearNightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearNightView.swift; sourceTree = "<group>"; };
+		849173ED2C481777003766B0 /* StarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
+		849173EF2C483777003766B0 /* CAKeyframeAnimation+animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAKeyframeAnimation+animations.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +257,7 @@
 				849173E22C47996F003766B0 /* CABasicAnimation+animations.swift */,
 				849173E42C47C103003766B0 /* UIApplication+helpers.swift */,
 				849173E62C47C11B003766B0 /* UIWindowScene+helpers.swift */,
+				849173EF2C483777003766B0 /* CAKeyframeAnimation+animations.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -264,6 +273,7 @@
 		849173C52C46AA85003766B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				849173E82C47F83A003766B0 /* ClearNight */,
 				849173DD2C46FE3C003766B0 /* Sun */,
 				849173C62C46AAC1003766B0 /* WeatherPickerElementView.swift */,
 			);
@@ -286,6 +296,16 @@
 				849173DE2C46FE49003766B0 /* SunRayView.swift */,
 			);
 			path = Sun;
+			sourceTree = "<group>";
+		};
+		849173E82C47F83A003766B0 /* ClearNight */ = {
+			isa = PBXGroup;
+			children = (
+				849173EB2C480D18003766B0 /* ClearNightView.swift */,
+				849173E92C480C62003766B0 /* CrescentMoonView.swift */,
+				849173ED2C481777003766B0 /* StarView.swift */,
+			);
+			path = ClearNight;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,9 +387,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849173EE2C481777003766B0 /* StarView.swift in Sources */,
 				8491739F2C469CF3003766B0 /* AppCoordinator.swift in Sources */,
+				849173EC2C480D18003766B0 /* ClearNightView.swift in Sources */,
 				849173CE2C46DBB7003766B0 /* AppImages.swift in Sources */,
 				849173A42C469D95003766B0 /* NavigationController.swift in Sources */,
+				849173F02C483777003766B0 /* CAKeyframeAnimation+animations.swift in Sources */,
 				849173C22C46A3D2003766B0 /* WeatherType.swift in Sources */,
 				849173A22C469D25003766B0 /* Coordinator.swift in Sources */,
 				849173C42C46A540003766B0 /* CAGradientLayer+AppGradients.swift in Sources */,
@@ -388,6 +411,7 @@
 				849173A62C469DBA003766B0 /* NavigationPopObserver.swift in Sources */,
 				849173AF2C469E74003766B0 /* WeatherPickerViewController.swift in Sources */,
 				849173C72C46AAC1003766B0 /* WeatherPickerElementView.swift in Sources */,
+				849173EA2C480C62003766B0 /* CrescentMoonView.swift in Sources */,
 				849173B42C469FDE003766B0 /* NavigationBarHiding.swift in Sources */,
 				849173A92C469DFA003766B0 /* AppDependency.swift in Sources */,
 				849173872C4699C9003766B0 /* SceneDelegate.swift in Sources */,

@@ -10,13 +10,44 @@ final class WeatherPickerViewModel {
 
 	var weatherType: WeatherType = .clear {
 		didSet {
-			onWeatherTypeUpdated?(SunView())
+			onWeatherTypeUpdated?(getWeatherView())
 		}
 	}
 
 	var onWeatherTypeUpdated: ((ViewAnimatable) -> Void)?
 
 	func getWeatherView() -> ViewAnimatable {
-		SunView()
+		switch weatherType {
+		case .clear:
+			return SunView()
+		case .clearNight:
+			return ClearNightView()
+		default:
+			return SunView()
+			//		case .cloudy:
+			//			<#code#>
+			//		case .partlyCloudy:
+			//			<#code#>
+			//		case .cloudyNight:
+			//			<#code#>
+			//		case .fog:
+			//			<#code#>
+			//		case .heavyRain:
+			//			<#code#>
+			//		case .rain:
+			//			<#code#>
+			//		case .rainNight:
+			//			<#code#>
+			//		case .thunderstorm:
+			//			<#code#>
+			//		case .blizzard:
+			//			<#code#>
+			//		case .snow:
+			//			<#code#>
+			//		case .wind:
+			//			<#code#>
+			//		case .hail:
+			//			<#code#>
+		}
 	}
 }

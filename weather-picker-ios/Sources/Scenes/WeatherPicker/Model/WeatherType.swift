@@ -22,8 +22,15 @@ enum WeatherType: CaseIterable {
 				type: .axial,
 				animated: true
 			)
-//		case .clearNight:
-//
+		case .clearNight:
+			CAGradientLayer.AppGradients.makeMultipleColorsGradient(
+				colors: [
+					AppColors.Gradient.Night.nightPrimary.cgColor,
+					AppColors.Gradient.Night.nightSecondary.cgColor,
+					AppColors.Gradient.Night.nightTertiary.cgColor
+				], type: .axial
+				, animated: true
+			)
 //		case .hot:
 //			<#code#>
 //		case .windy:

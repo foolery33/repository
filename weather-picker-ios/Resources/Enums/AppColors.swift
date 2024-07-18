@@ -21,6 +21,19 @@ enum AppColors {
 			static let sunTertiary = UIColor.sunTertiary
 			static let sunQuaternary = UIColor.sunQuaternary
 		}
+
+		enum Night {
+			static let nightPrimary = UIColor.nightPrimary
+			static let nightSecondary = UIColor.nightSecondary
+			static let nightTertiary = UIColor.nightTertiary
+		}
+
+		enum Moon {
+			static let moonPrimary = UIColor.moonPrimary
+			static let moonSecondary = UIColor.moonSecondary
+			static let moonTertiary = UIColor.moonTertiary
+			static let moonQuaternary = UIColor.moonQuaternary
+		}
 	}
 	static let white = UIColor.white
 	static let darkPurple = UIColor.darkPurple

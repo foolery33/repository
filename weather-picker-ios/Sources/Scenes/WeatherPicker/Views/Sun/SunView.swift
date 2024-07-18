@@ -41,9 +41,7 @@ final class SunView: UIView {
 	private func setup() {
 		setupSunView()
 		setupRays()
-		startAnimation() {
-
-		}
+		startAnimation() {}
 	}
 
 	private func setupSunView() {
@@ -93,55 +91,26 @@ final class SunView: UIView {
 
 extension SunView: ViewAnimatable {
 	func startAnimation(completion: @escaping (() -> Void)) {
-		sunView.layer.add(CABasicAnimation.makeRotationAnimation(duration: 60), forKey: nil)
-		layer.add(CABasicAnimation.makeRotationAnimation(clockwise: false , duration: 180), forKey: nil)
-
-		let rotationAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
-		rotationAnimation.values = [0, Float.pi / 4, Float.pi / 2, Float.pi * 0.75, Float.pi, Float.pi * 1.25, Float.pi * 2, Float.pi * 4, Float.pi * 8].reversed()
-		rotationAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-		rotationAnimation.duration = 1
-		rotationAnimation.isAdditive = true
-
-		let positionYAnimation = CAKeyframeAnimation(keyPath: "position.y")
-		positionYAnimation.values = [0, -80, -120, 120, -1000].reversed()
-		positionYAnimation.timingFunction = CAMediaTimingFunction(name: .easeIn)
-		positionYAnimation.duration = 1
-		positionYAnimation.isAdditive = true
-
-		let scaleAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-		scaleAnimation.values = [0, 0.5, 0.6, -0.1, -1].reversed()
-		scaleAnimation.timingFunction = CAMediaTimingFunction(name: .easeIn)
-		scaleAnimation.duration = 1
-		scaleAnimation.isAdditive = true
-
-		layer.add(rotationAnimation, forKey: AnimationKeys.rotation)
-		layer.add(positionYAnimation, forKey: AnimationKeys.positionY)
-		layer.add(scaleAnimation, forKey: AnimationKeys.transformScale)
+		sunView.layer.add(CABasicAnimation.makeRotationAnimation(angle: 2 * CGFloat.pi, duration: 60), forKey: nil)
+		layer.add(CABasicAnimation.makeRotationAnimation(angle: 2 * CGFloat.pi, clockwise: false , duration: 180), forKey: nil)
+		layer.add(Constants.startRotationZAnimation, forKey: UUID().uuidString)
+		layer.add(Constants.startPositionYAnimation, forKey: UUID().uuidString)
+		layer.add(Constants.startScaleAnimation, forKey: UUID().uuidString)
 	}
+
 	func stopAnimation(completion: @escaping (() -> Void)) {
-		let rotationAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
-		rotationAnimation.values = [0, Float.pi / 4, Float.pi / 2, Float.pi * 0.75, Float.pi, Float.pi * 1.25, Float.pi * 2, Float.pi * 4, Float.pi * 8]
-		rotationAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-		rotationAnimation.duration = 1
-		rotationAnimation.isAdditive = true
-
-		let positionYAnimation = CAKeyframeAnimation(keyPath: "position.y")
-		positionYAnimation.values = [0, -80, -120, 120, -1000]
-		positionYAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-		positionYAnimation.duration = 1
-		positionYAnimation.isAdditive = true
-		positionYAnimation.isRemovedOnCompletion = false
-		positionYAnimation.fillMode = .forwards
-
-		let scaleAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-		scaleAnimation.values = [0, 0.5, 0.6, -0.1, -1]
-		scaleAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-		scaleAnimation.duration = 1
-		scaleAnimation.isAdditive = true
-
-		layer.add(rotationAnimation, forKey: AnimationKeys.rotation)
-		layer.add(positionYAnimation, forKey: AnimationKeys.positionY)
-		layer.add(scaleAnimation, forKey: AnimationKeys.transformScale)
+		layer.add(Constants.startRotationZAnimation.updated(
+			values: [0, Float.pi / 4, Float.pi / 2, Float.pi * 0.75, Float.pi, Float.pi * 1.25, Float.pi * 2, Float.pi * 4, Float.pi * 8]
+		), forKey: UUID().uuidString)
+		layer.add(Constants.startPositionYAnimation.updated(
+			timingFunction: CAMediaTimingFunction(name: .easeOut),
+			values: [0, -80, -120, 120, -1000],
+			shouldRemove: false
+		), forKey: UUID().uuidString)
+		layer.add(Constants.startScaleAnimation.updated(
+			timingFunction: CAMediaTimingFunction(name: .easeOut),
+			values: [0, 0.5, 0.6, -0.1, -1]
+		), forKey: UUID().uuidString)
 
 		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 			completion()
@@ -149,12 +118,32 @@ extension SunView: ViewAnimatable {
 	}
 }
 
-// MARK: - AnimationKeys
+// MARK: - Constants
 
 private extension SunView {
-	enum AnimationKeys {
-		static let rotation = "rotation"
-		static let positionY = "positionY"
-		static let transformScale = "scale"
+	enum Constants {
+		static let startRotationZAnimation = CAKeyframeAnimation.makeAnimation(
+			keyPath: .transformRotationZ,
+			duration: 1,
+			timingFunction: CAMediaTimingFunction(name: .easeInEaseOut),
+			values: [Float.pi * 8, Float.pi * 4, Float.pi * 2, Float.pi * 1.25, Float.pi * 0.75, Float.pi / 2, Float.pi / 4, 0],
+			repeatCount: 1
+		)
+
+		static let startPositionYAnimation = CAKeyframeAnimation.makeAnimation(
+			keyPath: .positionY,
+			duration: 1,
+			timingFunction: CAMediaTimingFunction(name: .easeIn),
+			values: [-1000, 120, -120, -80, 0],
+			repeatCount: 1
+		)
+
+		static let startScaleAnimation = CAKeyframeAnimation.makeAnimation(
+			keyPath: .transformScale,
+			duration: 1,
+			timingFunction: CAMediaTimingFunction(name: .easeIn),
+			values: [-1, -0.1, 0.6, 0.5, 0],
+			repeatCount: 1
+		)
 	}
 }

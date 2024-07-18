@@ -29,18 +29,17 @@ final class WeatherPickerViewController: BaseViewController, NavigationBarHiding
 
 	override func viewWillLayoutSubviews() {
 		super.viewWillLayoutSubviews()
-		backgroundGradient.frame = view.bounds
+		backgroundGradient.frame = backgroundGradientView.bounds
 	}
 
 	// MARK: - Private
 
 	private let viewModel: WeatherPickerViewModel
 
-	private let backgroundGradient = WeatherType.clear.backgroundGradient
-
 	private let weatherPickerScrollView = UIScrollView()
 	private let weatherPickerStackView = UIStackView()
-	private let backgroundGradientView = UIView()
+	private var backgroundGradientView = UIView()
+	private lazy var backgroundGradient = viewModel.weatherType.backgroundGradient
 	private lazy var weatherView: ViewAnimatable? = viewModel.getWeatherView() {
 		didSet {
 			setupWeatherView()
@@ -49,7 +48,7 @@ final class WeatherPickerViewController: BaseViewController, NavigationBarHiding
 
 	private func setup() {
 		setupBindings()
-		configureView()
+		setupBackgroundGradientView()
 		setupWeatherPickerScrollView()
 		setupWeatherPickerStackView()
 		setupWeatherView()
@@ -62,17 +61,20 @@ final class WeatherPickerViewController: BaseViewController, NavigationBarHiding
 		}
 	}
 
-	private func configureView() {
-		view.layer.addSublayer(backgroundGradient)
+	private func setupBackgroundGradientView() {
+		view.addSubview(backgroundGradientView)
+		backgroundGradientView.frame = view.bounds
+		backgroundGradientView.layer.addSublayer(backgroundGradient)
 	}
 
 	private func setupWeatherView() {
 		guard let weatherView else { return }
 
 		view.addSubview(weatherView)
+		view.bringSubviewToFront(weatherPickerScrollView)
 
 		weatherView.snp.makeConstraints { make in
-			make.center.equalToSuperview()
+			make.edges.equalToSuperview()
 		}
 	}
 
@@ -119,5 +121,23 @@ final class WeatherPickerViewController: BaseViewController, NavigationBarHiding
 		self.weatherView?.removeFromSuperview()
 		self.weatherView = weatherView
 		setupWeatherView()
+		updateBackgroundGradientView()
+	}
+
+	private func updateBackgroundGradientView() {
+		let newGradientLayer = viewModel.weatherType.backgroundGradient
+		
+		let newGradientView = UIView(frame: backgroundGradientView.bounds)
+		newGradientView.isHidden = false
+		newGradientView.backgroundColor = .white
+		newGradientView.layer.addSublayer(newGradientLayer)
+		newGradientLayer.frame = newGradientView.bounds
+
+		view.addSubview(newGradientView)
+		view.sendSubviewToBack(newGradientView)
+		UIView.transition(from: backgroundGradientView, to: newGradientView, duration: 0.5, options: [.transitionCrossDissolve, .showHideTransitionViews]) { _ in
+			self.backgroundGradientView.removeFromSuperview()
+			self.backgroundGradientView = newGradientView
+		}
 	}
 }

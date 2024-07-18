@@ -43,6 +43,29 @@ extension CAGradientLayer {
 			return gradientLayer
 		}
 
+		static let moonGradient: CAGradientLayer = {
+			let gradientLayer = CAGradientLayer()
+			let colors = [
+				AppColors.Gradient.Moon.moonPrimary.cgColor,
+				AppColors.Gradient.Moon.moonSecondary.cgColor,
+				AppColors.Gradient.Moon.moonTertiary.cgColor
+			]
+			gradientLayer.type = .axial
+			gradientLayer.colors = colors
+			gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+			gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+
+			gradientLayer.addGradientAnimation(colors: colors, duration: 5)
+			return gradientLayer
+		}()
+
+		static var starGradient: CAGradientLayer {
+			makeRandomColorsPlacementGradient(colors: [
+				AppColors.Gradient.Moon.moonTertiary.cgColor,
+				AppColors.Gradient.Moon.moonQuaternary.cgColor
+			], animated: true)
+		}
+
 		static func makeMultipleColorsGradient(colors: [CGColor], type: CAGradientLayerType = .radial, animated: Bool = false) -> CAGradientLayer {
 			let gradientLayer = CAGradientLayer()
 

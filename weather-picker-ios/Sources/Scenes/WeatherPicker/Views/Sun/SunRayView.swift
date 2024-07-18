@@ -58,7 +58,6 @@ final class SunRayView: UIView {
 
 	private func setup() {
 		backgroundColor = .clear
-		setupGradient()
 		layer.addSublayer(gradient)
 	}
 
