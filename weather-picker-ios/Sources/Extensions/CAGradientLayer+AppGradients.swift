@@ -66,6 +66,19 @@ extension CAGradientLayer {
 			], animated: true)
 		}
 
+		static var cloudGradient: CAGradientLayer {
+			makeRandomColorsPlacementGradient(
+				colors: [
+					AppColors.Gradient.Cloud.cloudPrimary.cgColor,
+					AppColors.Gradient.Cloud.cloudSecondary.cgColor,
+					AppColors.Gradient.Cloud.cloudTertiary.cgColor,
+					AppColors.Gradient.Cloud.cloudQuaternary.cgColor
+				],
+				animated: true,
+				duration: .random(in: 10...30)
+			)
+		}
+
 		static func makeMultipleColorsGradient(colors: [CGColor], type: CAGradientLayerType = .radial, animated: Bool = false) -> CAGradientLayer {
 			let gradientLayer = CAGradientLayer()
 
@@ -81,7 +94,7 @@ extension CAGradientLayer {
 			return gradientLayer
 		}
 
-		static func makeRandomColorsPlacementGradient(colors: [CGColor], animated: Bool = false) -> CAGradientLayer {
+		static func makeRandomColorsPlacementGradient(colors: [CGColor], animated: Bool = false, duration: CGFloat = 10) -> CAGradientLayer {
 			let gradientLayer = CAGradientLayer()
 
 			gradientLayer.colors = colors
@@ -92,7 +105,7 @@ extension CAGradientLayer {
 			gradientLayer.locations = [0, randomFloat, 1]
 
 			if animated {
-				gradientLayer.addGradientAnimation(colors: colors, duration: 10)
+				gradientLayer.addGradientAnimation(colors: colors, duration: duration)
 			}
 
 			return gradientLayer

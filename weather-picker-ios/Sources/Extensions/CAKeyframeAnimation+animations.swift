@@ -14,6 +14,7 @@ extension CAKeyframeAnimation {
 		case transformRotationZ = "transform.rotation.z"
 		case transformScale = "transform.scale"
 		case positionY = "position.y"
+		case positionX = "position.x"
 	}
 
 	static func makeAnimation(
@@ -79,9 +80,16 @@ extension CAKeyframeAnimation {
 			copyAnimation.values = values
 		}
 		if let clockwise {
+			var currentValues: [Float] = []
+			if let values {
+				currentValues = values
+			} else {
+				if let safeValues = self.values as? [Float] {
+					currentValues = safeValues
+				}
+			}
 			let direction: Float = clockwise ? 1.0 : -1.0
-			copyAnimation.values = [0, direction * Float.pi / 6, 0]
-			copyAnimation.isAdditive = true
+			copyAnimation.values = currentValues.map { direction * $0 }
 		}
 		if let repeatCount {
 			copyAnimation.repeatCount = repeatCount

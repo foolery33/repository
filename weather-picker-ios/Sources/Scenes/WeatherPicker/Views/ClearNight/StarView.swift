@@ -81,8 +81,8 @@ final class StarView: UIView {
 	private lazy var shineAnimation = CAKeyframeAnimation.makeStarShiningAnimation(duration: 1, clockwise: clockwiseAnimation)
 
 	private func setup() {
-		layer.addSublayer(gradient)
 		backgroundColor = .clear
+		layer.addSublayer(gradient)
 		shineAnimation.delegate = self
 	}
 }

@@ -34,6 +34,19 @@ enum AppColors {
 			static let moonTertiary = UIColor.moonTertiary
 			static let moonQuaternary = UIColor.moonQuaternary
 		}
+
+		enum Cloud {
+			static let cloudPrimary = UIColor.cloudPrimary
+			static let cloudSecondary = UIColor.cloudSecondary
+			static let cloudTertiary = UIColor.cloudTertiary
+			static let cloudQuaternary = UIColor.cloudQuaternary
+		}
+
+		enum Cloudy {
+			static let cloudyPrimary = UIColor.cloudyPrimary
+			static let cloudySecondary = UIColor.cloudySecondary
+			static let cloudyTertiary = UIColor.cloudyTertiary
+		}
 	}
 	static let white = UIColor.white
 	static let darkPurple = UIColor.darkPurple

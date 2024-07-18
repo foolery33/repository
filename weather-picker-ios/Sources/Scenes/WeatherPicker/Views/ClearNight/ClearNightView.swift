@@ -89,8 +89,6 @@ extension ClearNightView: ViewAnimatable {
 			star.stopAnimation {}
 		}
 		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-			print("go")
-			self.layer.position = CGPoint(x: 0, y: -1000)
 			completion()
 		}
 	}
