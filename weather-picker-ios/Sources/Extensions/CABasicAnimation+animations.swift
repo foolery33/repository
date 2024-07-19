@@ -8,14 +8,80 @@
 import UIKit
 
 extension CABasicAnimation {
-	enum Keys {
-		static let transformRotationZ = "transform.rotation.z"
-		static let colors = "colors"
+	enum BasicAnimationKeys: String {
+		case transformRotationZ = "transform.rotation.z"
+		case colors = "colors"
+		case positionY = "position.y"
+		case path = "path"
+		case opacity = "opacity"
 	}
-	
+
+	static func makeAnimation(
+		keyPath: BasicAnimationKeys,
+		duration: CGFloat,
+		fromValue: Any? = nil,
+		toValue: Any? = nil,
+		timingFunction: CAMediaTimingFunction = CAMediaTimingFunction(name: .linear),
+		repeatCount: Float = .infinity,
+		shouldRemove: Bool = true
+	) -> CABasicAnimation {
+		let animation = CABasicAnimation(keyPath: keyPath.rawValue)
+
+		animation.duration = duration
+		animation.timingFunction = timingFunction
+		animation.fromValue = fromValue
+		animation.toValue = toValue
+		animation.autoreverses = true
+		animation.repeatCount = repeatCount
+
+		if !shouldRemove {
+			animation.isRemovedOnCompletion = false
+			animation.fillMode = .forwards
+			animation.autoreverses = false
+		}
+
+		return animation
+	}
+
+	func updated(
+		duration: CGFloat? = nil,
+		fromValue: Any? = nil,
+		toValue: Any? = nil,
+		timingFunction: CAMediaTimingFunction? = nil,
+		repeatCount: Float? = nil,
+		shouldRemove: Bool? = nil
+	) -> CABasicAnimation {
+		guard let copyAnimation = self.copy() as? CABasicAnimation else { return .init() }
+		if let duration {
+			copyAnimation.duration = duration
+		}
+		if let timingFunction {
+			copyAnimation.timingFunction = timingFunction
+		}
+		if let fromValue {
+			copyAnimation.fromValue = fromValue
+		}
+		if let toValue {
+			copyAnimation.toValue = toValue
+		}
+		if let repeatCount {
+			copyAnimation.repeatCount = repeatCount
+		}
+		if let shouldRemove {
+			if shouldRemove {
+				copyAnimation.isRemovedOnCompletion = true
+				copyAnimation.fillMode = .removed
+			} else {
+				copyAnimation.isRemovedOnCompletion = false
+				copyAnimation.fillMode = .forwards
+			}
+		}
+		return copyAnimation
+	}
+
 	static func makeGradientAnimation(colors: [CGColor], duration: CGFloat, repeatCount: Float = .infinity) -> CABasicAnimation {
-		let animation = CABasicAnimation(keyPath: Keys.colors)
-		
+		let animation = CABasicAnimation(keyPath: BasicAnimationKeys.colors.rawValue)
+
 		animation.fromValue = colors
 		animation.toValue = Array(colors.reversed())
 		animation.duration = duration
@@ -26,7 +92,7 @@ extension CABasicAnimation {
 	}
 
 	static func makeRotationAnimation(angle: CGFloat, clockwise: Bool = true, duration: CGFloat, repeatCount: Float = .infinity) -> CABasicAnimation {
-		let animation = CABasicAnimation(keyPath: Keys.transformRotationZ)
+		let animation = CABasicAnimation(keyPath: BasicAnimationKeys.transformRotationZ.rawValue)
 		let direction = clockwise ? 1.0 : -1.0
 		animation.toValue = NSNumber(value: angle * direction)
 		animation.duration = duration

@@ -8,33 +8,35 @@
 import UIKit
 import SnapKit
 
-final class WeatherPickerViewController: BaseViewController, NavigationBarHiding {
+final class WeatherPickerViewController: UIViewController {
 	// MARK: - Init
 
 	init(viewModel: WeatherPickerViewModel) {
 		self.viewModel = viewModel
 		super.init(nibName: nil, bundle: nil)
 	}
-	
+
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
+
 	// MARK: - Lifecycle methods
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		setup()
-    }
+	}
 
-	override func viewWillLayoutSubviews() {
-		super.viewWillLayoutSubviews()
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
 		backgroundGradient.frame = backgroundGradientView.bounds
+		scrollToSelectedWeatherType()
 	}
 
 	// MARK: - Private
 
 	private let viewModel: WeatherPickerViewModel
+	private var firstDidLayoutSubviewsCall: Bool = true
 
 	private let weatherPickerScrollView = UIScrollView()
 	private let weatherPickerStackView = UIStackView()
@@ -126,7 +128,7 @@ final class WeatherPickerViewController: BaseViewController, NavigationBarHiding
 
 	private func updateBackgroundGradientView() {
 		let newGradientLayer = viewModel.weatherType.backgroundGradient
-		
+
 		let newGradientView = UIView(frame: backgroundGradientView.bounds)
 		newGradientView.isHidden = false
 		newGradientView.backgroundColor = .white
@@ -139,5 +141,17 @@ final class WeatherPickerViewController: BaseViewController, NavigationBarHiding
 			self.backgroundGradientView.removeFromSuperview()
 			self.backgroundGradientView = newGradientView
 		}
+	}
+
+	private func scrollToSelectedWeatherType() {
+		guard firstDidLayoutSubviewsCall else { return }
+		guard let selectedSubviews = weatherPickerStackView.arrangedSubviews as? [WeatherPickerElementView] else { return }
+		guard let selectedSubview = selectedSubviews.first(where: { $0.isSelected }), selectedSubview.bounds != .zero else { return }
+
+		weatherPickerScrollView.setContentOffset(
+			CGPoint(x: selectedSubview.frame.minX - 16, y: 0),
+			animated: false
+		)
+		firstDidLayoutSubviewsCall = false
 	}
 }

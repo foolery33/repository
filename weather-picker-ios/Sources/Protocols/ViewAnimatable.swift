@@ -1,5 +1,5 @@
 //
-//  Animatable.swift
+//  ViewAnimatable.swift
 //  weather-picker-ios
 //
 //  Created by Nikita Usov on 17.07.2024.

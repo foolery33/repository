@@ -79,6 +79,38 @@ extension CAGradientLayer {
 			)
 		}
 
+		static var fogGradient: CAGradientLayer {
+			let gradientLayer = CAGradientLayer()
+
+			gradientLayer.colors = [
+				UIColor.clear.cgColor,
+				UIColor.white.cgColor
+			]
+			gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.15)
+			gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+			gradientLayer.locations = [0, 0.3, 1]
+
+			return gradientLayer
+		}
+
+		static var roadGradient: CAGradientLayer {
+			let gradientLayer = CAGradientLayer()
+
+			let colors = [
+				AppColors.white.withAlphaComponent(0.7).cgColor,
+				AppColors.white.withAlphaComponent(0.5).cgColor,
+				AppColors.white.withAlphaComponent(0.3).cgColor,
+				AppColors.white.withAlphaComponent(0).cgColor,
+				AppColors.white.withAlphaComponent(0).cgColor
+			]
+			gradientLayer.colors = colors
+			gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+			gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+			gradientLayer.addGradientAnimation(colors: colors, duration: 20)
+
+			return gradientLayer
+		}
+
 		static func makeMultipleColorsGradient(colors: [CGColor], type: CAGradientLayerType = .radial, animated: Bool = false) -> CAGradientLayer {
 			let gradientLayer = CAGradientLayer()
 

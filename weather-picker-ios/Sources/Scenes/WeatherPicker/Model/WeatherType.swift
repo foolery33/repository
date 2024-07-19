@@ -49,8 +49,16 @@ enum WeatherType: CaseIterable {
 //			<#code#>
 //		case .rainbow:
 //			<#code#>
-//		case .fog:
-//			<#code#>
+		case .fog:
+			CAGradientLayer.AppGradients.makeMultipleColorsGradient(
+				colors: [
+					AppColors.Gradient.Foggy.foggyPrimary.cgColor,
+					AppColors.Gradient.Foggy.foggySecondary.cgColor,
+					AppColors.Gradient.Foggy.foggyTertiary.cgColor
+				],
+				type: .axial,
+				animated: true
+			)
 //		case .cloudy:
 //			<#code#>
 //		case .snow:

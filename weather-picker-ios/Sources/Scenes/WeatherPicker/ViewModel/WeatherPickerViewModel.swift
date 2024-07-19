@@ -8,7 +8,7 @@
 final class WeatherPickerViewModel {
 	// MARK: - Public
 
-	var weatherType: WeatherType = .cloudy {
+	var weatherType: WeatherType = .fog {
 		didSet {
 			onWeatherTypeUpdated?(getWeatherView())
 		}
@@ -24,14 +24,12 @@ final class WeatherPickerViewModel {
 			return ClearNightView()
 		case .cloudy:
 			return CloudyWeatherView()
-		default:
-			return SunView()
 			//		case .partlyCloudy:
 			//			<#code#>
 			//		case .cloudyNight:
 			//			<#code#>
-			//		case .fog:
-			//			<#code#>
+		case .fog:
+			return FogWeatherView()
 			//		case .heavyRain:
 			//			<#code#>
 			//		case .rain:
@@ -48,6 +46,8 @@ final class WeatherPickerViewModel {
 			//			<#code#>
 			//		case .hail:
 			//			<#code#>
+		default:
+			return SunView()
 		}
 	}
 }

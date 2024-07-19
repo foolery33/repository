@@ -47,8 +47,22 @@ enum AppColors {
 			static let cloudySecondary = UIColor.cloudySecondary
 			static let cloudyTertiary = UIColor.cloudyTertiary
 		}
+
+		enum Fog {
+			static let fogPrimary = UIColor.fogPrimary
+			static let fogSecondary = UIColor.fogSecondary
+			static let fogTertiary = UIColor.fogTertiary
+			static let fogQuaternary = UIColor.fogQuaternary
+		}
+
+		enum Foggy {
+			static let foggyPrimary = UIColor.foggyPrimary
+			static let foggySecondary = UIColor.foggySecondary
+			static let foggyTertiary = UIColor.foggyTertiary
+		}
 	}
 	static let white = UIColor.white
+	static let black = UIColor.black
 	static let darkPurple = UIColor.darkPurple
 	static let blueGray = UIColor.blueGray
 	static let orangeYellow = UIColor.orangeYellow

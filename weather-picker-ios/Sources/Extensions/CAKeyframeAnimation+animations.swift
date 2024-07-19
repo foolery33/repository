@@ -27,6 +27,7 @@ extension CAKeyframeAnimation {
 		shouldRemove: Bool = true
 	) -> CAKeyframeAnimation {
 		let animation = CAKeyframeAnimation(keyPath: keyPath.rawValue)
+		
 		animation.duration = duration
 		animation.timingFunction = timingFunction
 		animation.isAdditive = true
