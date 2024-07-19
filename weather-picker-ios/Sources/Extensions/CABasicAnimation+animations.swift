@@ -22,6 +22,8 @@ extension CABasicAnimation {
 		fromValue: Any? = nil,
 		toValue: Any? = nil,
 		timingFunction: CAMediaTimingFunction = CAMediaTimingFunction(name: .linear),
+		autoreverses: Bool = true,
+		isCumulative: Bool = true,
 		repeatCount: Float = .infinity,
 		shouldRemove: Bool = true
 	) -> CABasicAnimation {
@@ -48,6 +50,8 @@ extension CABasicAnimation {
 		fromValue: Any? = nil,
 		toValue: Any? = nil,
 		timingFunction: CAMediaTimingFunction? = nil,
+		autoreverses: Bool? = nil,
+		isCumulative: Bool? = nil,
 		repeatCount: Float? = nil,
 		shouldRemove: Bool? = nil
 	) -> CABasicAnimation {
@@ -63,6 +67,12 @@ extension CABasicAnimation {
 		}
 		if let toValue {
 			copyAnimation.toValue = toValue
+		}
+		if let autoreverses {
+			copyAnimation.autoreverses = autoreverses
+		}
+		if let isCumulative {
+			copyAnimation.isCumulative = isCumulative
 		}
 		if let repeatCount {
 			copyAnimation.repeatCount = repeatCount

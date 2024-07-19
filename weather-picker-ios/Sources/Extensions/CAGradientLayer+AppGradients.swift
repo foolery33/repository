@@ -128,6 +128,23 @@ extension CAGradientLayer {
 			return gradientLayer
 		}
 
+		static var snowdriftGradient: CAGradientLayer {
+			let gradientLayer = CAGradientLayer()
+
+			let colors = [
+				AppColors.Gradient.Snowdrift.snowdriftPrimary.cgColor,
+				AppColors.Gradient.Snowdrift.snowdriftSecondary.cgColor,
+				AppColors.Gradient.Snowdrift.snowdriftTertiary.cgColor
+			]
+			gradientLayer.colors = colors
+			gradientLayer.type = .axial
+			gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+			gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+			gradientLayer.addGradientAnimation(colors: colors, duration: 1)
+
+			return gradientLayer
+		}
+
 		static func makeMultipleColorsGradient(colors: [CGColor], type: CAGradientLayerType = .radial, animated: Bool = false) -> CAGradientLayer {
 			let gradientLayer = CAGradientLayer()
 

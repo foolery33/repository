@@ -70,6 +70,7 @@
       }
     },
     "cloudyNight" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

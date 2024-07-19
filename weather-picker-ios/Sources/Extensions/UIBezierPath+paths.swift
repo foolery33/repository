@@ -11,6 +11,8 @@ enum DrawingType {
 	case raindropFirst
 	case raindropSecond
 	case cloud
+	case snowflake
+	case snowdrift
 }
 
 extension UIBezierPath {
@@ -24,6 +26,10 @@ extension UIBezierPath {
 			makeSecondRaindropPath(rect)
 		case .cloud:
 			makeCloudPath(rect)
+		case .snowflake:
+			makeSnowflakePath(rect)
+		case .snowdrift:
+			makeSnowdriftPath(rect)
 		}
 	}
 
@@ -173,5 +179,80 @@ extension UIBezierPath {
 		path.fill()
 
 		return path
+	}
+
+	static private func makeSnowflakePath(_ rect: CGRect) -> UIBezierPath {
+		let path = UIBezierPath()
+		let center = CGPoint(x: rect.midX, y: rect.midY)
+
+		// Function to draw a line from start to end with a given angle and length
+		func drawLine(from start: CGPoint, angle: CGFloat, length: CGFloat) -> CGPoint {
+			let end = CGPoint(x: start.x + length * cos(angle), y: start.y + length * sin(angle))
+			path.move(to: start)
+			path.addLine(to: end)
+			return end
+		}
+
+		// Draw the main arms of the snowflake
+		let mainArmLength: CGFloat = min(rect.width, rect.height) / 6 * 2.3
+		for i in 0..<6 {
+			let angle = CGFloat(i) * .pi / 3
+			let mainArmEnd = drawLine(from: center, angle: angle, length: mainArmLength)
+
+			// Draw branches on each main arm
+			let branchLength: CGFloat = mainArmLength / 3
+			let branchAngle: CGFloat = .pi / 3 // 15 degrees in radians
+
+			for j in -2...2 {
+				guard j != 0 else { continue }
+				_ = drawLine(from: mainArmEnd, angle: angle + CGFloat(j) * branchAngle, length: branchLength)
+			}
+		}
+		
+		path.stroke()
+
+		path.lineWidth = 2
+		UIColor.white.setStroke()
+
+		path.stroke()
+		return path
+	}
+
+	static private func makeSnowdriftPath(_ rect: CGRect) -> UIBezierPath {
+		let path = UIBezierPath()
+
+		path.move(to: CGPoint(x: 0, y: rect.height))
+		path.addLine(to: CGPoint(x: 0, y: rect.height * 0.7))
+		path.addCurve(
+			to: CGPoint(x: rect.width / 2 * 1.3, y: rect.height * 0.7),
+			controlPoint1: CGPoint(x: rect.width / 6, y: rect.height * 0.5),
+			controlPoint2: CGPoint(x: rect.width / 2 * 1.3 * 0.8, y: rect.height * 0.85)
+		)
+		path.addLine(to: CGPoint(x: rect.width / 2 * 1.3, y: rect.height))
+		path.close()
+
+		let secondPath = UIBezierPath()
+
+		secondPath.move(to: CGPoint(x: rect.width / 2 * 0.5, y: rect.height * 0.8))
+		secondPath.addCurve(
+			to: CGPoint(x: rect.width, y: rect.height * 0.6),
+			controlPoint1: CGPoint(x: rect.width / 2 * 0.9, y: rect.height * 0.6),
+			controlPoint2: CGPoint(x: rect.width * 0.9, y: rect.height * 0.6)
+		)
+		secondPath.addLine(to: CGPoint(x: rect.width, y: rect.height))
+		secondPath.addLine(to: CGPoint(x: 0, y: rect.height))
+
+		secondPath.close()
+
+		let combinedPath = UIBezierPath()
+		combinedPath.append(path)
+		combinedPath.append(secondPath)
+
+		combinedPath.lineWidth = 20
+		UIColor.white.setStroke()
+		combinedPath.fill()
+		combinedPath.stroke()
+
+		return combinedPath
 	}
 }

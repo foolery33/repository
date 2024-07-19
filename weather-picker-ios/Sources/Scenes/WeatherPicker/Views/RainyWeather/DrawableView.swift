@@ -46,9 +46,9 @@ final class DrawableView: UIView {
 		self.stopAnimations = stopAnimations
 	}
 
-	func setDelayedAnimation(_ animation: CAAnimation, delay: Double) {
+	func setDelayedAnimation(_ animation: (anim: CAAnimation, key: String), delay: Double) {
 		DispatchQueue.main.asyncAfter(deadline: .now() + .random(in: delay...delay)) {
-			self.layer.add(animation, forKey: UUID().uuidString)
+			self.layer.add(animation.anim, forKey: animation.key)
 		}
 	}
 

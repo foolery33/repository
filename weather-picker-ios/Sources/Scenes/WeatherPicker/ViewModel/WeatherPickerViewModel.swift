@@ -7,15 +7,15 @@
 
 final class WeatherPickerViewModel {
 	// MARK: - Public
-	
-	var weatherType: WeatherType = .rain {
+
+	var weatherType: WeatherType = .snow {
 		didSet {
 			onWeatherTypeUpdated?(getWeatherView())
 		}
 	}
-	
+
 	var onWeatherTypeUpdated: ((ViewAnimatable) -> Void)?
-	
+
 	func getWeatherView() -> ViewAnimatable {
 		switch weatherType {
 		case .clear:
@@ -40,8 +40,8 @@ final class WeatherPickerViewModel {
 			//			<#code#>
 			//		case .blizzard:
 			//			<#code#>
-			//		case .snow:
-			//			<#code#>
+		case .snow:
+			return SnowyWeatherView()
 			//		case .wind:
 			//			<#code#>
 			//		case .hail:

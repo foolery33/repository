@@ -8,7 +8,7 @@
 import UIKit
 
 enum WeatherType: CaseIterable {
-	case clear, clearNight, cloudy, partlyCloudy, cloudyNight, fog, heavyRain, rain, rainNight, thunderstorm, blizzard, snow, wind, hail
+	case clear, clearNight, cloudy, fog, rain, thunderstorm, snow
 
 	var backgroundGradient: CAGradientLayer {
 		switch self {
@@ -69,8 +69,17 @@ enum WeatherType: CaseIterable {
 			)
 //		case .cloudy:
 //			<#code#>
-//		case .snow:
-//			<#code#>
+		case .snow:
+			CAGradientLayer.AppGradients.makeMultipleColorsGradient(
+				colors: [
+					AppColors.Gradient.Snowy.snowyPrimary.cgColor,
+					AppColors.Gradient.Snowy.snowyTertiary.cgColor,
+					AppColors.Gradient.Snowy.snowySecondary.cgColor,
+					AppColors.Gradient.Snowy.snowyTertiary.cgColor
+				],
+				type: .axial,
+				animated: true
+			)
 //		case .hail:
 //			<#code#>
 //		case .thunderstorm:
@@ -91,28 +100,14 @@ enum WeatherType: CaseIterable {
 			NSLocalizedString("clearNight", comment: "")
 		case .cloudy:
 			NSLocalizedString("cloudy", comment: "")
-		case .partlyCloudy:
-			NSLocalizedString("partlyCloudy", comment: "")
-		case .cloudyNight:
-			NSLocalizedString("cloudyNight", comment: "")
 		case .fog:
 			NSLocalizedString("fog", comment: "")
-		case .heavyRain:
-			NSLocalizedString("heavyRain", comment: "")
 		case .rain:
 			NSLocalizedString("rain", comment: "")
-		case .rainNight:
-			NSLocalizedString("rainNight", comment: "")
 		case .thunderstorm:
 			NSLocalizedString("thunderstorm", comment: "")
-		case .blizzard:
-			NSLocalizedString("blizzard", comment: "")
 		case .snow:
 			NSLocalizedString("snow", comment: "")
-		case .wind:
-			NSLocalizedString("wind", comment: "")
-		case .hail:
-			NSLocalizedString("hail", comment: "")
 		}
 	}
 
@@ -124,28 +119,14 @@ enum WeatherType: CaseIterable {
 			AppImages.clearNight
 		case .cloudy:
 			AppImages.cloudy
-		case .partlyCloudy:
-			AppImages.partlyCloudy
-		case .cloudyNight:
-			AppImages.cloudyNight
 		case .fog:
 			AppImages.fog
-		case .heavyRain:
-			AppImages.heavyRain
 		case .rain:
 			AppImages.rain
-		case .rainNight:
-			AppImages.rainNight
 		case .thunderstorm:
 			AppImages.thunderstorm
-		case .blizzard:
-			AppImages.blizzard
 		case .snow:
 			AppImages.snow
-		case .wind:
-			AppImages.wind
-		case .hail:
-			AppImages.hail
 		}
 	}
 }

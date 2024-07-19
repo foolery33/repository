@@ -116,7 +116,7 @@ final class RainyWeatherView: UIView {
 			)
 
 			raindropView.setDelayedAnimation(
-				raindropStartMovingAnimation(
+				(raindropStartMovingAnimation(
 					xOffset: Float(calculateFinalX(
 						startPoint: raindropView.frame.origin,
 						angle: raindropView.rotationAngleInRadians,
@@ -124,7 +124,7 @@ final class RainyWeatherView: UIView {
 					)),
 					raindropHeight: raindropView.bounds.height,
 					clockwise: raindropView.rotationAngleInRadians < 0
-				),
+				), UUID().uuidString),
 				delay: Double.random(in: 0...5)
 			)
 		}

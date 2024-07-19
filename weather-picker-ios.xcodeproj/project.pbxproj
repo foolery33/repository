@@ -49,6 +49,8 @@
 		849174072C4A3C2C003766B0 /* DrawableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849174062C4A3C2C003766B0 /* DrawableView.swift */; };
 		849174092C4A49DD003766B0 /* RainyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849174082C4A49DD003766B0 /* RainyWeatherView.swift */; };
 		8491740B2C4AB12F003766B0 /* UIView+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491740A2C4AB12F003766B0 /* UIView+helpers.swift */; };
+		8491740E2C4AC5C2003766B0 /* SnowyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491740D2C4AC5C2003766B0 /* SnowyWeatherView.swift */; };
+		849174102C4AD6A7003766B0 /* CGPoint+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491740F2C4AD6A7003766B0 /* CGPoint+helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +98,8 @@
 		849174062C4A3C2C003766B0 /* DrawableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableView.swift; sourceTree = "<group>"; };
 		849174082C4A49DD003766B0 /* RainyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainyWeatherView.swift; sourceTree = "<group>"; };
 		8491740A2C4AB12F003766B0 /* UIView+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+helpers.swift"; sourceTree = "<group>"; };
+		8491740D2C4AC5C2003766B0 /* SnowyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowyWeatherView.swift; sourceTree = "<group>"; };
+		8491740F2C4AD6A7003766B0 /* CGPoint+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +282,7 @@
 				849173FD2C497967003766B0 /* CGPath+helpers.swift */,
 				849174012C4985E3003766B0 /* UIBezierPath+paths.swift */,
 				8491740A2C4AB12F003766B0 /* UIView+helpers.swift */,
+				8491740F2C4AD6A7003766B0 /* CGPoint+helpers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -293,11 +298,12 @@
 		849173C52C46AA85003766B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				849174052C4A3BEF003766B0 /* Rainy */,
-				849173F82C4929D2003766B0 /* Foggy */,
-				849173F12C48E2B2003766B0 /* Cloudy */,
-				849173E82C47F83A003766B0 /* ClearNight */,
-				849173DD2C46FE3C003766B0 /* Clear */,
+				8491740C2C4AC58C003766B0 /* SnowyWeather */,
+				849174052C4A3BEF003766B0 /* RainyWeather */,
+				849173F82C4929D2003766B0 /* FoggyWeather */,
+				849173F12C48E2B2003766B0 /* CloudyWeather */,
+				849173E82C47F83A003766B0 /* ClearNightWeather */,
+				849173DD2C46FE3C003766B0 /* ClearWeather */,
 				849173C62C46AAC1003766B0 /* WeatherPickerElementView.swift */,
 			);
 			path = Views;
@@ -312,51 +318,59 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		849173DD2C46FE3C003766B0 /* Clear */ = {
+		849173DD2C46FE3C003766B0 /* ClearWeather */ = {
 			isa = PBXGroup;
 			children = (
 				849173D92C46F899003766B0 /* SunView.swift */,
 				849173DE2C46FE49003766B0 /* SunRayView.swift */,
 			);
-			path = Clear;
+			path = ClearWeather;
 			sourceTree = "<group>";
 		};
-		849173E82C47F83A003766B0 /* ClearNight */ = {
+		849173E82C47F83A003766B0 /* ClearNightWeather */ = {
 			isa = PBXGroup;
 			children = (
 				849173EB2C480D18003766B0 /* ClearNightView.swift */,
 				849173E92C480C62003766B0 /* CrescentMoonView.swift */,
 				849173ED2C481777003766B0 /* StarView.swift */,
 			);
-			path = ClearNight;
+			path = ClearNightWeather;
 			sourceTree = "<group>";
 		};
-		849173F12C48E2B2003766B0 /* Cloudy */ = {
+		849173F12C48E2B2003766B0 /* CloudyWeather */ = {
 			isa = PBXGroup;
 			children = (
 				849173F22C48E2D6003766B0 /* CloudView.swift */,
 				849173F42C48E385003766B0 /* CloudyWeatherView.swift */,
 			);
-			path = Cloudy;
+			path = CloudyWeather;
 			sourceTree = "<group>";
 		};
-		849173F82C4929D2003766B0 /* Foggy */ = {
+		849173F82C4929D2003766B0 /* FoggyWeather */ = {
 			isa = PBXGroup;
 			children = (
 				849173F92C4929E4003766B0 /* FogWeatherView.swift */,
 				849173FB2C492F18003766B0 /* FoggyRoadView.swift */,
 				849174032C49BFC7003766B0 /* RoadView.swift */,
 			);
-			path = Foggy;
+			path = FoggyWeather;
 			sourceTree = "<group>";
 		};
-		849174052C4A3BEF003766B0 /* Rainy */ = {
+		849174052C4A3BEF003766B0 /* RainyWeather */ = {
 			isa = PBXGroup;
 			children = (
 				849174062C4A3C2C003766B0 /* DrawableView.swift */,
 				849174082C4A49DD003766B0 /* RainyWeatherView.swift */,
 			);
-			path = Rainy;
+			path = RainyWeather;
+			sourceTree = "<group>";
+		};
+		8491740C2C4AC58C003766B0 /* SnowyWeather */ = {
+			isa = PBXGroup;
+			children = (
+				8491740D2C4AC5C2003766B0 /* SnowyWeatherView.swift */,
+			);
+			path = SnowyWeather;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,6 +462,7 @@
 				849173F02C483777003766B0 /* CAKeyframeAnimation+animations.swift in Sources */,
 				849173C22C46A3D2003766B0 /* WeatherType.swift in Sources */,
 				849173A22C469D25003766B0 /* Coordinator.swift in Sources */,
+				849174102C4AD6A7003766B0 /* CGPoint+helpers.swift in Sources */,
 				849173C42C46A540003766B0 /* CAGradientLayer+AppGradients.swift in Sources */,
 				8491740B2C4AB12F003766B0 /* UIView+helpers.swift in Sources */,
 				849173852C4699C9003766B0 /* AppDelegate.swift in Sources */,
@@ -460,6 +475,7 @@
 				849173F32C48E2D6003766B0 /* CloudView.swift in Sources */,
 				849173E52C47C103003766B0 /* UIApplication+helpers.swift in Sources */,
 				849173E72C47C11B003766B0 /* UIWindowScene+helpers.swift in Sources */,
+				8491740E2C4AC5C2003766B0 /* SnowyWeatherView.swift in Sources */,
 				849173FC2C492F18003766B0 /* FoggyRoadView.swift in Sources */,
 				849174072C4A3C2C003766B0 /* DrawableView.swift in Sources */,
 				849173FA2C4929E4003766B0 /* FogWeatherView.swift in Sources */,

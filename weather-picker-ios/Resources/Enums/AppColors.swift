@@ -72,6 +72,18 @@ enum AppColors {
 			static let rainySecondary = UIColor.rainySecondary
 			static let rainyTertiary = UIColor.rainyTertiary
 		}
+
+		enum Snowdrift {
+			static let snowdriftPrimary = UIColor.snowdriftPrimary
+			static let snowdriftSecondary = UIColor.snowdriftSecondary
+			static let snowdriftTertiary = UIColor.snowdriftTertiary
+		}
+
+		enum Snowy {
+			static let snowyPrimary = UIColor.snowyPrimary
+			static let snowySecondary = UIColor.snowySecondary
+			static let snowyTertiary = UIColor.snowyTertiary
+		}
 	}
 	static let white = UIColor.white
 	static let black = UIColor.black
