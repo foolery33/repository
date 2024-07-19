@@ -69,7 +69,7 @@ private extension RoadView {
 	var roadGradientOpacityStartAnimation: CABasicAnimation {
 		CABasicAnimation.makeAnimation(
 			keyPath: .opacity,
-			duration: 10,
+			duration: 4,
 			toValue: 1,
 			repeatCount: 1,
 			shouldRemove: false

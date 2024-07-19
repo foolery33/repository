@@ -46,6 +46,9 @@
 		849173FE2C497967003766B0 /* CGPath+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173FD2C497967003766B0 /* CGPath+helpers.swift */; };
 		849174022C4985E3003766B0 /* UIBezierPath+paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849174012C4985E3003766B0 /* UIBezierPath+paths.swift */; };
 		849174042C49BFC7003766B0 /* RoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849174032C49BFC7003766B0 /* RoadView.swift */; };
+		849174072C4A3C2C003766B0 /* DrawableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849174062C4A3C2C003766B0 /* DrawableView.swift */; };
+		849174092C4A49DD003766B0 /* RainyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849174082C4A49DD003766B0 /* RainyWeatherView.swift */; };
+		8491740B2C4AB12F003766B0 /* UIView+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491740A2C4AB12F003766B0 /* UIView+helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +93,9 @@
 		849173FD2C497967003766B0 /* CGPath+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+helpers.swift"; sourceTree = "<group>"; };
 		849174012C4985E3003766B0 /* UIBezierPath+paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+paths.swift"; sourceTree = "<group>"; };
 		849174032C49BFC7003766B0 /* RoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadView.swift; sourceTree = "<group>"; };
+		849174062C4A3C2C003766B0 /* DrawableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableView.swift; sourceTree = "<group>"; };
+		849174082C4A49DD003766B0 /* RainyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainyWeatherView.swift; sourceTree = "<group>"; };
+		8491740A2C4AB12F003766B0 /* UIView+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +277,7 @@
 				849173EF2C483777003766B0 /* CAKeyframeAnimation+animations.swift */,
 				849173FD2C497967003766B0 /* CGPath+helpers.swift */,
 				849174012C4985E3003766B0 /* UIBezierPath+paths.swift */,
+				8491740A2C4AB12F003766B0 /* UIView+helpers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -286,7 +293,8 @@
 		849173C52C46AA85003766B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				849173F82C4929D2003766B0 /* Fog */,
+				849174052C4A3BEF003766B0 /* Rainy */,
+				849173F82C4929D2003766B0 /* Foggy */,
 				849173F12C48E2B2003766B0 /* Cloudy */,
 				849173E82C47F83A003766B0 /* ClearNight */,
 				849173DD2C46FE3C003766B0 /* Clear */,
@@ -332,14 +340,23 @@
 			path = Cloudy;
 			sourceTree = "<group>";
 		};
-		849173F82C4929D2003766B0 /* Fog */ = {
+		849173F82C4929D2003766B0 /* Foggy */ = {
 			isa = PBXGroup;
 			children = (
 				849173F92C4929E4003766B0 /* FogWeatherView.swift */,
 				849173FB2C492F18003766B0 /* FoggyRoadView.swift */,
 				849174032C49BFC7003766B0 /* RoadView.swift */,
 			);
-			path = Fog;
+			path = Foggy;
+			sourceTree = "<group>";
+		};
+		849174052C4A3BEF003766B0 /* Rainy */ = {
+			isa = PBXGroup;
+			children = (
+				849174062C4A3C2C003766B0 /* DrawableView.swift */,
+				849174082C4A49DD003766B0 /* RainyWeatherView.swift */,
+			);
+			path = Rainy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -432,6 +449,7 @@
 				849173C22C46A3D2003766B0 /* WeatherType.swift in Sources */,
 				849173A22C469D25003766B0 /* Coordinator.swift in Sources */,
 				849173C42C46A540003766B0 /* CAGradientLayer+AppGradients.swift in Sources */,
+				8491740B2C4AB12F003766B0 /* UIView+helpers.swift in Sources */,
 				849173852C4699C9003766B0 /* AppDelegate.swift in Sources */,
 				849173E32C47996F003766B0 /* CABasicAnimation+animations.swift in Sources */,
 				849173AD2C469E4E003766B0 /* WeatherPickerViewModel.swift in Sources */,
@@ -443,6 +461,7 @@
 				849173E52C47C103003766B0 /* UIApplication+helpers.swift in Sources */,
 				849173E72C47C11B003766B0 /* UIWindowScene+helpers.swift in Sources */,
 				849173FC2C492F18003766B0 /* FoggyRoadView.swift in Sources */,
+				849174072C4A3C2C003766B0 /* DrawableView.swift in Sources */,
 				849173FA2C4929E4003766B0 /* FogWeatherView.swift in Sources */,
 				849173CC2C46DB85003766B0 /* AppColors.swift in Sources */,
 				849174042C49BFC7003766B0 /* RoadView.swift in Sources */,
@@ -455,6 +474,7 @@
 				849173EA2C480C62003766B0 /* CrescentMoonView.swift in Sources */,
 				849173A92C469DFA003766B0 /* AppDependency.swift in Sources */,
 				849173872C4699C9003766B0 /* SceneDelegate.swift in Sources */,
+				849174092C4A49DD003766B0 /* RainyWeatherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

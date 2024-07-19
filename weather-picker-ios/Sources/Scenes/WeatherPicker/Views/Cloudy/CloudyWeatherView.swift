@@ -30,8 +30,8 @@ final class CloudyWeatherView: UIView {
 	}
 
 	private func setupCloudViews() {
+		let screenSize = UIApplication.shared.windowSize
 		for i in 0..<cloudCount {
-			let screenSize = UIApplication.shared.windowSize
 			let cloudWidth = CGFloat.random(in: 100...screenSize.width / 1.5)
 			let cloud = CloudView(
 				frame: CGRect(

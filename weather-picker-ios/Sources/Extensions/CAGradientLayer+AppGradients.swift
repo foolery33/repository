@@ -106,7 +106,24 @@ extension CAGradientLayer {
 			gradientLayer.colors = colors
 			gradientLayer.startPoint = CGPoint(x: 0, y: 1)
 			gradientLayer.endPoint = CGPoint(x: 1, y: 0)
-			gradientLayer.addGradientAnimation(colors: colors, duration: 20)
+			gradientLayer.addGradientAnimation(colors: colors, duration: 10)
+
+			return gradientLayer
+		}
+
+		static var raindropGradient: CAGradientLayer {
+			let gradientLayer = CAGradientLayer()
+
+			let colors = [
+				AppColors.Gradient.Raindrop.raindropPrimary.cgColor,
+				AppColors.Gradient.Raindrop.raindropSecondary.cgColor,
+				AppColors.Gradient.Raindrop.raindropTertiary.cgColor
+			]
+			gradientLayer.colors = colors
+			gradientLayer.type = .axial
+			gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+			gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+			gradientLayer.addGradientAnimation(colors: colors, duration: 1)
 
 			return gradientLayer
 		}

@@ -126,6 +126,8 @@ extension StarView: ViewAnimatable {
 
 extension StarView: CAAnimationDelegate {
 	func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+//		print(anim == self.shineAnimation)
+		
 		if flag {
 			DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(.random(in: 10...60))) {
 				self.layer.add(self.shineAnimation, forKey: UUID().uuidString)

@@ -60,6 +60,18 @@ enum AppColors {
 			static let foggySecondary = UIColor.foggySecondary
 			static let foggyTertiary = UIColor.foggyTertiary
 		}
+
+		enum Raindrop {
+			static let raindropPrimary = UIColor.raindropPrimary
+			static let raindropSecondary = UIColor.raindropSecondary
+			static let raindropTertiary = UIColor.raindropTertiary
+		}
+
+		enum Rainy {
+			static let rainyPrimary = UIColor.rainyPrimary
+			static let rainySecondary = UIColor.rainySecondary
+			static let rainyTertiary = UIColor.rainyTertiary
+		}
 	}
 	static let white = UIColor.white
 	static let black = UIColor.black

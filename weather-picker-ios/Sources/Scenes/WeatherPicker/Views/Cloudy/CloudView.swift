@@ -83,10 +83,6 @@ final class CloudView: UIView {
 // MARK: - ViewAnimatable
 
 extension CloudView: ViewAnimatable {
-	var animationDuration: Float {
-		1
-	}
-	
 	func startAnimation(completion: @escaping (() -> Void)) {
 		let dY = Float.random(in: 5...200)
 		layer.add(startScaleAnimation, forKey: UUID().uuidString)
