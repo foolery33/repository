@@ -85,6 +85,8 @@ enum AppColors {
 			static let snowyTertiary = UIColor.snowyTertiary
 		}
 	}
+
+	static let clear = UIColor.clear
 	static let white = UIColor.white
 	static let black = UIColor.black
 	static let darkPurple = UIColor.darkPurple

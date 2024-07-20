@@ -13,13 +13,9 @@
 		849173912C4699CA003766B0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 849173902C4699CA003766B0 /* Base */; };
 		8491739F2C469CF3003766B0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491739E2C469CF3003766B0 /* AppCoordinator.swift */; };
 		849173A22C469D25003766B0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173A12C469D25003766B0 /* Coordinator.swift */; };
-		849173A42C469D95003766B0 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173A32C469D95003766B0 /* NavigationController.swift */; };
-		849173A62C469DBA003766B0 /* NavigationPopObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173A52C469DBA003766B0 /* NavigationPopObserver.swift */; };
-		849173A92C469DFA003766B0 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173A82C469DFA003766B0 /* AppDependency.swift */; };
 		849173AD2C469E4E003766B0 /* WeatherPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173AC2C469E4E003766B0 /* WeatherPickerViewModel.swift */; };
 		849173AF2C469E74003766B0 /* WeatherPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173AE2C469E74003766B0 /* WeatherPickerViewController.swift */; };
 		849173B12C469EF2003766B0 /* WeatherPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173B02C469EF2003766B0 /* WeatherPickerCoordinator.swift */; };
-		849173B62C46A032003766B0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173B52C46A032003766B0 /* BaseViewController.swift */; };
 		849173BC2C46A09F003766B0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849173BB2C46A09F003766B0 /* Colors.xcassets */; };
 		849173C22C46A3D2003766B0 /* WeatherType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173C12C46A3D2003766B0 /* WeatherType.swift */; };
 		849173C42C46A540003766B0 /* CAGradientLayer+AppGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173C32C46A540003766B0 /* CAGradientLayer+AppGradients.swift */; };
@@ -28,25 +24,18 @@
 		849173CE2C46DBB7003766B0 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173CD2C46DBB7003766B0 /* AppImages.swift */; };
 		849173D02C46DDB5003766B0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 849173CF2C46DDB5003766B0 /* Localizable.xcstrings */; };
 		849173D42C46E5C8003766B0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 849173D32C46E5C8003766B0 /* SnapKit */; };
-		849173DA2C46F899003766B0 /* SunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173D92C46F899003766B0 /* SunView.swift */; };
+		849173DA2C46F899003766B0 /* ClearWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173D92C46F899003766B0 /* ClearWeatherView.swift */; };
 		849173DC2C46FAB6003766B0 /* UIView+shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173DB2C46FAB6003766B0 /* UIView+shadow.swift */; };
-		849173DF2C46FE49003766B0 /* SunRayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173DE2C46FE49003766B0 /* SunRayView.swift */; };
 		849173E12C471077003766B0 /* ViewAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173E02C471077003766B0 /* ViewAnimatable.swift */; };
 		849173E32C47996F003766B0 /* CABasicAnimation+animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173E22C47996F003766B0 /* CABasicAnimation+animations.swift */; };
 		849173E52C47C103003766B0 /* UIApplication+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173E42C47C103003766B0 /* UIApplication+helpers.swift */; };
 		849173E72C47C11B003766B0 /* UIWindowScene+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173E62C47C11B003766B0 /* UIWindowScene+helpers.swift */; };
-		849173EA2C480C62003766B0 /* CrescentMoonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173E92C480C62003766B0 /* CrescentMoonView.swift */; };
-		849173EC2C480D18003766B0 /* ClearNightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173EB2C480D18003766B0 /* ClearNightView.swift */; };
-		849173EE2C481777003766B0 /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173ED2C481777003766B0 /* StarView.swift */; };
+		849173EC2C480D18003766B0 /* ClearNightWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173EB2C480D18003766B0 /* ClearNightWeatherView.swift */; };
 		849173F02C483777003766B0 /* CAKeyframeAnimation+animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173EF2C483777003766B0 /* CAKeyframeAnimation+animations.swift */; };
-		849173F32C48E2D6003766B0 /* CloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173F22C48E2D6003766B0 /* CloudView.swift */; };
 		849173F52C48E385003766B0 /* CloudyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173F42C48E385003766B0 /* CloudyWeatherView.swift */; };
-		849173FA2C4929E4003766B0 /* FogWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173F92C4929E4003766B0 /* FogWeatherView.swift */; };
-		849173FC2C492F18003766B0 /* FoggyRoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173FB2C492F18003766B0 /* FoggyRoadView.swift */; };
-		849173FE2C497967003766B0 /* CGPath+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173FD2C497967003766B0 /* CGPath+helpers.swift */; };
+		849173FC2C492F18003766B0 /* FoggyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173FB2C492F18003766B0 /* FoggyWeatherView.swift */; };
 		849174022C4985E3003766B0 /* UIBezierPath+paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849174012C4985E3003766B0 /* UIBezierPath+paths.swift */; };
-		849174042C49BFC7003766B0 /* RoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849174032C49BFC7003766B0 /* RoadView.swift */; };
-		849174072C4A3C2C003766B0 /* DrawableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849174062C4A3C2C003766B0 /* DrawableView.swift */; };
+		849174072C4A3C2C003766B0 /* BaseDrawableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849174062C4A3C2C003766B0 /* BaseDrawableView.swift */; };
 		849174092C4A49DD003766B0 /* RainyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849174082C4A49DD003766B0 /* RainyWeatherView.swift */; };
 		8491740B2C4AB12F003766B0 /* UIView+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491740A2C4AB12F003766B0 /* UIView+helpers.swift */; };
 		8491740E2C4AC5C2003766B0 /* SnowyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491740D2C4AC5C2003766B0 /* SnowyWeatherView.swift */; };
@@ -62,13 +51,9 @@
 		849173922C4699CA003766B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8491739E2C469CF3003766B0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		849173A12C469D25003766B0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		849173A32C469D95003766B0 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		849173A52C469DBA003766B0 /* NavigationPopObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPopObserver.swift; sourceTree = "<group>"; };
-		849173A82C469DFA003766B0 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		849173AC2C469E4E003766B0 /* WeatherPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPickerViewModel.swift; sourceTree = "<group>"; };
 		849173AE2C469E74003766B0 /* WeatherPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPickerViewController.swift; sourceTree = "<group>"; };
 		849173B02C469EF2003766B0 /* WeatherPickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPickerCoordinator.swift; sourceTree = "<group>"; };
-		849173B52C46A032003766B0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		849173BB2C46A09F003766B0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		849173C12C46A3D2003766B0 /* WeatherType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherType.swift; sourceTree = "<group>"; };
 		849173C32C46A540003766B0 /* CAGradientLayer+AppGradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+AppGradients.swift"; sourceTree = "<group>"; };
@@ -77,25 +62,18 @@
 		849173CD2C46DBB7003766B0 /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
 		849173CF2C46DDB5003766B0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		849173D12C46DDE3003766B0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		849173D92C46F899003766B0 /* SunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunView.swift; sourceTree = "<group>"; };
+		849173D92C46F899003766B0 /* ClearWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearWeatherView.swift; sourceTree = "<group>"; };
 		849173DB2C46FAB6003766B0 /* UIView+shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+shadow.swift"; sourceTree = "<group>"; };
-		849173DE2C46FE49003766B0 /* SunRayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunRayView.swift; sourceTree = "<group>"; };
 		849173E02C471077003766B0 /* ViewAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAnimatable.swift; sourceTree = "<group>"; };
 		849173E22C47996F003766B0 /* CABasicAnimation+animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CABasicAnimation+animations.swift"; sourceTree = "<group>"; };
 		849173E42C47C103003766B0 /* UIApplication+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+helpers.swift"; sourceTree = "<group>"; };
 		849173E62C47C11B003766B0 /* UIWindowScene+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindowScene+helpers.swift"; sourceTree = "<group>"; };
-		849173E92C480C62003766B0 /* CrescentMoonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrescentMoonView.swift; sourceTree = "<group>"; };
-		849173EB2C480D18003766B0 /* ClearNightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearNightView.swift; sourceTree = "<group>"; };
-		849173ED2C481777003766B0 /* StarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
+		849173EB2C480D18003766B0 /* ClearNightWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearNightWeatherView.swift; sourceTree = "<group>"; };
 		849173EF2C483777003766B0 /* CAKeyframeAnimation+animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAKeyframeAnimation+animations.swift"; sourceTree = "<group>"; };
-		849173F22C48E2D6003766B0 /* CloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudView.swift; sourceTree = "<group>"; };
 		849173F42C48E385003766B0 /* CloudyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudyWeatherView.swift; sourceTree = "<group>"; };
-		849173F92C4929E4003766B0 /* FogWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FogWeatherView.swift; sourceTree = "<group>"; };
-		849173FB2C492F18003766B0 /* FoggyRoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoggyRoadView.swift; sourceTree = "<group>"; };
-		849173FD2C497967003766B0 /* CGPath+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+helpers.swift"; sourceTree = "<group>"; };
+		849173FB2C492F18003766B0 /* FoggyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoggyWeatherView.swift; sourceTree = "<group>"; };
 		849174012C4985E3003766B0 /* UIBezierPath+paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+paths.swift"; sourceTree = "<group>"; };
-		849174032C49BFC7003766B0 /* RoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadView.swift; sourceTree = "<group>"; };
-		849174062C4A3C2C003766B0 /* DrawableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableView.swift; sourceTree = "<group>"; };
+		849174062C4A3C2C003766B0 /* BaseDrawableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDrawableView.swift; sourceTree = "<group>"; };
 		849174082C4A49DD003766B0 /* RainyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainyWeatherView.swift; sourceTree = "<group>"; };
 		8491740A2C4AB12F003766B0 /* UIView+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+helpers.swift"; sourceTree = "<group>"; };
 		8491740D2C4AC5C2003766B0 /* SnowyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowyWeatherView.swift; sourceTree = "<group>"; };
@@ -148,7 +126,6 @@
 				849173BD2C46A254003766B0 /* Extensions */,
 				849173B22C469FC4003766B0 /* Protocols */,
 				8491739A2C469C91003766B0 /* Scenes */,
-				849173A72C469DE2003766B0 /* Utils */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -203,19 +180,9 @@
 			isa = PBXGroup;
 			children = (
 				849173A12C469D25003766B0 /* Coordinator.swift */,
-				849173A32C469D95003766B0 /* NavigationController.swift */,
-				849173A52C469DBA003766B0 /* NavigationPopObserver.swift */,
-				849173B52C46A032003766B0 /* BaseViewController.swift */,
+				849174062C4A3C2C003766B0 /* BaseDrawableView.swift */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		849173A72C469DE2003766B0 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				849173A82C469DFA003766B0 /* AppDependency.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		849173AA2C469E38003766B0 /* WeatherPicker */ = {
@@ -279,7 +246,6 @@
 				849173E42C47C103003766B0 /* UIApplication+helpers.swift */,
 				849173E62C47C11B003766B0 /* UIWindowScene+helpers.swift */,
 				849173EF2C483777003766B0 /* CAKeyframeAnimation+animations.swift */,
-				849173FD2C497967003766B0 /* CGPath+helpers.swift */,
 				849174012C4985E3003766B0 /* UIBezierPath+paths.swift */,
 				8491740A2C4AB12F003766B0 /* UIView+helpers.swift */,
 				8491740F2C4AD6A7003766B0 /* CGPoint+helpers.swift */,
@@ -321,8 +287,7 @@
 		849173DD2C46FE3C003766B0 /* ClearWeather */ = {
 			isa = PBXGroup;
 			children = (
-				849173D92C46F899003766B0 /* SunView.swift */,
-				849173DE2C46FE49003766B0 /* SunRayView.swift */,
+				849173D92C46F899003766B0 /* ClearWeatherView.swift */,
 			);
 			path = ClearWeather;
 			sourceTree = "<group>";
@@ -330,9 +295,7 @@
 		849173E82C47F83A003766B0 /* ClearNightWeather */ = {
 			isa = PBXGroup;
 			children = (
-				849173EB2C480D18003766B0 /* ClearNightView.swift */,
-				849173E92C480C62003766B0 /* CrescentMoonView.swift */,
-				849173ED2C481777003766B0 /* StarView.swift */,
+				849173EB2C480D18003766B0 /* ClearNightWeatherView.swift */,
 			);
 			path = ClearNightWeather;
 			sourceTree = "<group>";
@@ -340,7 +303,6 @@
 		849173F12C48E2B2003766B0 /* CloudyWeather */ = {
 			isa = PBXGroup;
 			children = (
-				849173F22C48E2D6003766B0 /* CloudView.swift */,
 				849173F42C48E385003766B0 /* CloudyWeatherView.swift */,
 			);
 			path = CloudyWeather;
@@ -349,9 +311,7 @@
 		849173F82C4929D2003766B0 /* FoggyWeather */ = {
 			isa = PBXGroup;
 			children = (
-				849173F92C4929E4003766B0 /* FogWeatherView.swift */,
-				849173FB2C492F18003766B0 /* FoggyRoadView.swift */,
-				849174032C49BFC7003766B0 /* RoadView.swift */,
+				849173FB2C492F18003766B0 /* FoggyWeatherView.swift */,
 			);
 			path = FoggyWeather;
 			sourceTree = "<group>";
@@ -359,7 +319,6 @@
 		849174052C4A3BEF003766B0 /* RainyWeather */ = {
 			isa = PBXGroup;
 			children = (
-				849174062C4A3C2C003766B0 /* DrawableView.swift */,
 				849174082C4A49DD003766B0 /* RainyWeatherView.swift */,
 			);
 			path = RainyWeather;
@@ -452,13 +411,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				849173EE2C481777003766B0 /* StarView.swift in Sources */,
 				8491739F2C469CF3003766B0 /* AppCoordinator.swift in Sources */,
-				849173EC2C480D18003766B0 /* ClearNightView.swift in Sources */,
+				849173EC2C480D18003766B0 /* ClearNightWeatherView.swift in Sources */,
 				849173CE2C46DBB7003766B0 /* AppImages.swift in Sources */,
-				849173FE2C497967003766B0 /* CGPath+helpers.swift in Sources */,
 				849174022C4985E3003766B0 /* UIBezierPath+paths.swift in Sources */,
-				849173A42C469D95003766B0 /* NavigationController.swift in Sources */,
 				849173F02C483777003766B0 /* CAKeyframeAnimation+animations.swift in Sources */,
 				849173C22C46A3D2003766B0 /* WeatherType.swift in Sources */,
 				849173A22C469D25003766B0 /* Coordinator.swift in Sources */,
@@ -470,25 +426,17 @@
 				849173AD2C469E4E003766B0 /* WeatherPickerViewModel.swift in Sources */,
 				849173DC2C46FAB6003766B0 /* UIView+shadow.swift in Sources */,
 				849173F52C48E385003766B0 /* CloudyWeatherView.swift in Sources */,
-				849173B62C46A032003766B0 /* BaseViewController.swift in Sources */,
 				849173E12C471077003766B0 /* ViewAnimatable.swift in Sources */,
-				849173F32C48E2D6003766B0 /* CloudView.swift in Sources */,
 				849173E52C47C103003766B0 /* UIApplication+helpers.swift in Sources */,
 				849173E72C47C11B003766B0 /* UIWindowScene+helpers.swift in Sources */,
 				8491740E2C4AC5C2003766B0 /* SnowyWeatherView.swift in Sources */,
-				849173FC2C492F18003766B0 /* FoggyRoadView.swift in Sources */,
-				849174072C4A3C2C003766B0 /* DrawableView.swift in Sources */,
-				849173FA2C4929E4003766B0 /* FogWeatherView.swift in Sources */,
+				849173FC2C492F18003766B0 /* FoggyWeatherView.swift in Sources */,
+				849174072C4A3C2C003766B0 /* BaseDrawableView.swift in Sources */,
 				849173CC2C46DB85003766B0 /* AppColors.swift in Sources */,
-				849174042C49BFC7003766B0 /* RoadView.swift in Sources */,
-				849173DF2C46FE49003766B0 /* SunRayView.swift in Sources */,
 				849173B12C469EF2003766B0 /* WeatherPickerCoordinator.swift in Sources */,
-				849173DA2C46F899003766B0 /* SunView.swift in Sources */,
-				849173A62C469DBA003766B0 /* NavigationPopObserver.swift in Sources */,
+				849173DA2C46F899003766B0 /* ClearWeatherView.swift in Sources */,
 				849173AF2C469E74003766B0 /* WeatherPickerViewController.swift in Sources */,
 				849173C72C46AAC1003766B0 /* WeatherPickerElementView.swift in Sources */,
-				849173EA2C480C62003766B0 /* CrescentMoonView.swift in Sources */,
-				849173A92C469DFA003766B0 /* AppDependency.swift in Sources */,
 				849173872C4699C9003766B0 /* SceneDelegate.swift in Sources */,
 				849174092C4A49DD003766B0 /* RainyWeatherView.swift in Sources */,
 			);

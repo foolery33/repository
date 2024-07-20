@@ -22,10 +22,10 @@ extension CABasicAnimation {
 		fromValue: Any? = nil,
 		toValue: Any? = nil,
 		timingFunction: CAMediaTimingFunction = CAMediaTimingFunction(name: .linear),
-		autoreverses: Bool = true,
+		autoreverses: Bool = false,
 		isCumulative: Bool = true,
 		repeatCount: Float = .infinity,
-		shouldRemove: Bool = true
+		shouldRemove: Bool = false
 	) -> CABasicAnimation {
 		let animation = CABasicAnimation(keyPath: keyPath.rawValue)
 
@@ -33,13 +33,13 @@ extension CABasicAnimation {
 		animation.timingFunction = timingFunction
 		animation.fromValue = fromValue
 		animation.toValue = toValue
-		animation.autoreverses = true
+		animation.autoreverses = autoreverses
+		animation.isCumulative = isCumulative
 		animation.repeatCount = repeatCount
 
 		if !shouldRemove {
 			animation.isRemovedOnCompletion = false
 			animation.fillMode = .forwards
-			animation.autoreverses = false
 		}
 
 		return animation
@@ -87,28 +87,5 @@ extension CABasicAnimation {
 			}
 		}
 		return copyAnimation
-	}
-
-	static func makeGradientAnimation(colors: [CGColor], duration: CGFloat, repeatCount: Float = .infinity) -> CABasicAnimation {
-		let animation = CABasicAnimation(keyPath: BasicAnimationKeys.colors.rawValue)
-
-		animation.fromValue = colors
-		animation.toValue = Array(colors.reversed())
-		animation.duration = duration
-		animation.autoreverses = true
-		animation.repeatCount = repeatCount
-
-		return animation
-	}
-
-	static func makeRotationAnimation(angle: CGFloat, clockwise: Bool = true, duration: CGFloat, repeatCount: Float = .infinity) -> CABasicAnimation {
-		let animation = CABasicAnimation(keyPath: BasicAnimationKeys.transformRotationZ.rawValue)
-		let direction = clockwise ? 1.0 : -1.0
-		animation.toValue = NSNumber(value: angle * direction)
-		animation.duration = duration
-		animation.isCumulative = true
-		animation.repeatCount = repeatCount
-
-		return animation
 	}
 }

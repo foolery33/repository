@@ -8,23 +8,14 @@
 import UIKit
 
 protocol Coordinator: AnyObject {
-	init(navigationController: NavigationController,
-		 appDependency: AppDependency)
+	init(navigationController: UINavigationController)
 
-	var navigationController: NavigationController { get }
-	var appDependency: AppDependency { get }
+	var navigationController: UINavigationController { get }
 	var childCoordinators: [Coordinator] { get set }
 	var onDidFinish: (() -> Void)? { get set }
 
 	func start(animated: Bool)
-	func add(_ coordinator: Coordinator)
-	func remove(_ coordinator: Coordinator)
-
 	func show<T: Coordinator>(_ type: T.Type, animated: Bool) -> T
-	func startCoordinator(_ coordinator: Coordinator, animated: Bool)
-
-	func addPopObserver(for viewController: UIViewController)
-	func handleCoordinatorFinished()
 }
 
 // MARK: - Base realisation
@@ -40,7 +31,7 @@ extension Coordinator {
 
 	@discardableResult
 	func show<T: Coordinator>(_ type: T.Type, animated: Bool) -> T {
-		let coordinator = T(navigationController: navigationController, appDependency: appDependency)
+		let coordinator = T(navigationController: navigationController)
 		startCoordinator(coordinator, animated: animated)
 		return coordinator
 	}
@@ -49,17 +40,8 @@ extension Coordinator {
 		add(coordinator)
 		coordinator.onDidFinish = { [weak self, weak coordinator] in
 			guard let coordinator = coordinator else { return }
-			coordinator.handleCoordinatorFinished()
 			self?.remove(coordinator)
 		}
 		coordinator.start(animated: animated)
-	}
-
-	func addPopObserver(for viewController: UIViewController) {
-		navigationController.addPopObserver(for: viewController, coordinator: self)
-	}
-
-	func handleCoordinatorFinished() {
-		// Do nothing
 	}
 }

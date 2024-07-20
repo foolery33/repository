@@ -21,22 +21,21 @@ final class SnowyWeatherView: UIView {
 
 	// MARK: - Private
 
-	private var snowflakeViews: [DrawableView] = []
-	private let snowdriftView = DrawableView(drawingType: .snowdrift)
-	private let snowflakeCount = 100
+	private var snowflakeViews: [BaseDrawableView] = []
+	private let snowdriftView = BaseDrawableView(drawingType: .snowdrift)
 
 	private func setup() {
 		setupSnowflakeViews()
 		setupSnowdriftView()
 		setupGradients()
 		setupAnimations()
-		startAnimation {}
+		startAnimation()
 	}
 
 	private func setupSnowflakeViews() {
-		for _ in 0..<snowflakeCount {
+		for _ in 0..<Constants.snowflakeCount {
 			let snowflakeSize = Double.random(in: 3...20)
-			let snowflake = DrawableView(
+			let snowflake = BaseDrawableView(
 				drawingType: .snowflake,
 				frame: CGRect(
 					origin: CGPoint.randomTopPoint(withOffset: snowflakeSize),
@@ -54,10 +53,13 @@ final class SnowyWeatherView: UIView {
 	private func setupSnowdriftView() {
 		addSubview(snowdriftView)
 
-		snowdriftView.snp.makeConstraints { make in
-			make.bottom.horizontalEdges.equalToSuperview()
-			make.height.equalToSuperview().multipliedBy(0.8)
-		}
+		snowdriftView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			snowdriftView.bottomAnchor.constraint(equalTo: bottomAnchor),
+			snowdriftView.leadingAnchor.constraint(equalTo: leadingAnchor),
+			snowdriftView.trailingAnchor.constraint(equalTo: trailingAnchor),
+			snowdriftView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: Constants.showdriftHeightMultiplier)
+		])
 	}
 
 	private func setupGradients() {
@@ -91,27 +93,44 @@ final class SnowyWeatherView: UIView {
 			]
 		)
 	}
+
+	// TODO: - Переместить
+
+	private func snowflakeEndPoint() -> CGPoint {
+
+		let screenSize = UIApplication.shared.windowSize
+
+		let edge = Int.random(in: 0...2)
+		switch edge {
+		case 0:
+			return CGPoint(x: 0, y: CGFloat.random(in: 40...screenSize.height))
+		case 1:
+			return CGPoint(x: screenSize.width, y: CGFloat.random(in: 40...screenSize.height))
+		default:
+			return CGPoint(x: CGFloat.random(in: 0...screenSize.width), y: screenSize.height)
+		}
+	}
 }
 
 // MARK: - ViewAnimatable
 
 extension SnowyWeatherView: ViewAnimatable {
-	func startAnimation(completion: @escaping (() -> Void)) {
+	func startAnimation() {
 		for snowflakeView in snowflakeViews {
-			snowflakeView.startAnimation {}
+			snowflakeView.startAnimation()
 		}
 
-		snowdriftView.startAnimation {}
+		snowdriftView.startAnimation()
 	}
 
 	func stopAnimation(completion: @escaping (() -> Void)) {
 		for snowflakeView in self.snowflakeViews {
-			snowflakeView.stopAnimation {}
+			snowflakeView.stopAnimation {
+				completion()
+			}
 		}
 
-		snowdriftView.stopAnimation {}
-
-		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+		snowdriftView.stopAnimation {
 			completion()
 		}
 	}
@@ -125,10 +144,9 @@ private extension SnowyWeatherView {
 	var snowflakeStartOpacityAnimation: CABasicAnimation {
 		CABasicAnimation.makeAnimation(
 			keyPath: .opacity,
-			duration: 3,
+			duration: 2,
 			toValue: 1,
-			repeatCount: 1,
-			shouldRemove: false
+			repeatCount: 1
 		)
 	}
 
@@ -146,19 +164,25 @@ private extension SnowyWeatherView {
 			keyPath: .positionY,
 			duration: 1,
 			values: [Float(UIApplication.shared.windowSize.height), 0],
-			repeatCount: 1,
-			shouldRemove: false
+			repeatCount: 1
 		)
 	}
 
 	func snowflakeMovingAnimation(frame: CGRect) -> CAAnimationGroup {
 		let group = CAAnimationGroup()
+
+		let screenSize = UIApplication.shared.windowSize
+		let offset = frame.size.width
 		group.duration = .random(in: 10...30)
-		let targetPoint = frame.origin.nearestToEdge(withOffset: frame.size.width + 5).pointOnDifferentEdge()
+
+		let targetPoint = CGPoint(x: .random(in: -screenSize.width / 2...screenSize.width * 3 / 2), y: screenSize.height + offset)
+
 		group.animations = [
 			snowflakePositionXAnimation(initialX: frame.origin.x, targetX: targetPoint.x),
 			snowflakePositionYAnimation(initialY: frame.origin.y, targetY: targetPoint.y)
 		]
+		group.isRemovedOnCompletion = false
+		group.fillMode = .forwards
 		group.repeatCount = .infinity
 		return group
 	}
@@ -190,8 +214,17 @@ private extension SnowyWeatherView {
 
 	var snowdriftStopPositionYAnimation: CAAnimation {
 		snowdriftStartPositionYAnimation.updated(
-			duration: 2,
-			values: [0, Float(UIApplication.shared.windowSize.height)]
+			duration: 1,
+			values: [0, Float(UIApplication.shared.windowSize.height * Constants.showdriftHeightMultiplier)]
 		)
+	}
+}
+
+// MARK: - Constants
+
+private extension SnowyWeatherView {
+	enum Constants {
+		static let snowflakeCount = 100
+		static let showdriftHeightMultiplier = 0.8
 	}
 }

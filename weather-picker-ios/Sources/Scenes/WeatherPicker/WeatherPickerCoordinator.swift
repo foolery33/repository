@@ -5,18 +5,18 @@
 //  Created by Nikita Usov on 16.07.2024.
 //
 
+import UIKit
+
 final class WeatherPickerCoordinator: Coordinator {
 	// MARK: - Init
 
-	init(navigationController: NavigationController, appDependency: AppDependency) {
+	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
-		self.appDependency = appDependency
 	}
 
 	// MARK: - Public
 
-	let navigationController: NavigationController
-	let appDependency: AppDependency
+	let navigationController: UINavigationController
 
 	var childCoordinators: [Coordinator] = []
 	var onDidFinish: (() -> Void)?
@@ -24,10 +24,10 @@ final class WeatherPickerCoordinator: Coordinator {
 	// MARK: - Navigation
 
 	func start(animated: Bool) {
-		let viewModel = WeatherPickerViewModel()
+		let viewModel = WeatherPickerViewModel(weatherType: WeatherType.allCases.randomElement() ?? .clear)
 		let viewController = WeatherPickerViewController(viewModel: viewModel)
-
-		addPopObserver(for: viewController)
+		
+		navigationController.setNavigationBarHidden(true, animated: false)
 		navigationController.pushViewController(viewController, animated: animated)
 	}
 }

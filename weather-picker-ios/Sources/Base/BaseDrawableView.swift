@@ -1,5 +1,5 @@
 //
-//  DrawableView.swift
+//  BaseDrawableView.swift
 //  weather-picker-ios
 //
 //  Created by Nikita Usov on 19.07.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DrawableView: UIView {
+final class BaseDrawableView: UIView {
 	// MARK: - Init
 
 	init(drawingType: DrawingType, frame: CGRect? = nil) {
@@ -23,7 +23,9 @@ final class DrawableView: UIView {
 	// MARK: - Override
 
 	override func draw(_ rect: CGRect) {
-		bezierPath = UIBezierPath.makePath(by: drawingType, rect: rect)
+		let bezierPath = UIBezierPath.makePath(by: drawingType, rect: rect)
+		layer.shadowPath = bezierPath.cgPath
+		self.bezierPath = bezierPath
 	}
 
 	override func layoutSubviews() {
@@ -52,6 +54,10 @@ final class DrawableView: UIView {
 		}
 	}
 
+	func addShadow() {
+		layer.shadowPath = bezierPath?.cgPath
+	}
+
 	// MARK: - Private
 
 	private let drawingType: DrawingType
@@ -76,19 +82,16 @@ final class DrawableView: UIView {
 		gradientMask?.path = bezierPath?.cgPath
 		self.gradient?.mask = gradientMask
 		self.gradient?.frame = bounds
+		layer.shadowPath = bezierPath?.cgPath
 	}
 }
 
 // MARK: - ViewAnimatable
 
-extension DrawableView: ViewAnimatable {
-	func startAnimation(completion: @escaping (() -> Void)) {
+extension BaseDrawableView: ViewAnimatable {
+	func startAnimation() {
 		for animation in startAnimations {
 			layer.add(animation.anim, forKey: animation.key)
-
-			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-				completion()
-			}
 		}
 	}
 

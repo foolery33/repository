@@ -10,9 +10,13 @@ import UIKit
 enum DrawingType {
 	case raindropFirst
 	case raindropSecond
+	case road
 	case cloud
 	case snowflake
 	case snowdrift
+	case sunRay
+	case star
+	case crescentMoon
 }
 
 extension UIBezierPath {
@@ -24,12 +28,20 @@ extension UIBezierPath {
 			makeFirstRaindropPath(rect)
 		case .raindropSecond:
 			makeSecondRaindropPath(rect)
+		case .road:
+			makeRoadPath(rect)
 		case .cloud:
 			makeCloudPath(rect)
 		case .snowflake:
 			makeSnowflakePath(rect)
 		case .snowdrift:
 			makeSnowdriftPath(rect)
+		case .sunRay:
+			makeSunRayPath(rect)
+		case .star:
+			makeStarPath(rect)
+		case .crescentMoon:
+			makeCrescentMoonPath(rect)
 		}
 	}
 
@@ -254,5 +266,69 @@ extension UIBezierPath {
 		combinedPath.stroke()
 
 		return combinedPath
+	}
+
+	static private func makeSunRayPath(_ rect: CGRect) -> UIBezierPath {
+		let path = UIBezierPath()
+
+		path.move(to: CGPoint(x: rect.width / 2, y: rect.height))
+		path.addLine(to: CGPoint(x: 0, y: 0))
+		path.addLine(to: CGPoint(x: rect.width, y: 0))
+
+		path.close()
+		path.fill()
+
+		return path
+	}
+
+	static private func makeStarPath(_ rect: CGRect) -> UIBezierPath {
+		let path = UIBezierPath()
+
+		let topPoint = CGPoint(x: rect.midX, y: rect.minY)
+		let rightPoint = CGPoint(x: rect.maxX, y: rect.midY)
+		let bottomPoint = CGPoint(x: rect.midX, y: rect.maxY)
+		let leftPoint = CGPoint(x: rect.minX, y: rect.midY)
+
+		path.move(to: topPoint)
+		path.addCurve(to: rightPoint,
+					  controlPoint1: CGPoint(x: rect.midX + rect.width * 0.1, y: rect.minY + rect.height * 0.3),
+					  controlPoint2: CGPoint(x: rect.maxX - rect.width * 0.3, y: rect.midY - rect.height * 0.1))
+		path.addCurve(to: bottomPoint,
+					  controlPoint1: CGPoint(x: rect.maxX - rect.width * 0.3, y: rect.midY + rect.height * 0.1),
+					  controlPoint2: CGPoint(x: rect.midX + rect.width * 0.1, y: rect.maxY - rect.height * 0.3))
+		path.addCurve(to: leftPoint,
+					  controlPoint1: CGPoint(x: rect.midX - rect.width * 0.1, y: rect.maxY - rect.height * 0.3),
+					  controlPoint2: CGPoint(x: rect.minX + rect.width * 0.3, y: rect.midY + rect.height * 0.1))
+		path.addCurve(to: topPoint,
+					  controlPoint1: CGPoint(x: rect.minX + rect.width * 0.3, y: rect.midY - rect.height * 0.1),
+					  controlPoint2: CGPoint(x: rect.midX - rect.width * 0.1, y: rect.minY + rect.height * 0.3))
+
+		path.close()
+		path.fill()
+
+		return path
+	}
+
+	static private func makeCrescentMoonPath(_ rect: CGRect) -> UIBezierPath {
+		let path = UIBezierPath()
+
+		let startPoint = CGPoint(x: rect.width * 0.5, y: rect.height * 0.1)
+		path.move(to: startPoint)
+
+		let outerControlPoint1 = CGPoint(x: rect.width * 1.1, y: rect.height * 0.1)
+		let outerControlPoint2 = CGPoint(x: rect.width * 1.1, y: rect.height * 0.9)
+		let outerEndPoint = CGPoint(x: rect.width * 0.5, y: rect.height * 0.9)
+
+		path.addCurve(to: outerEndPoint, controlPoint1: outerControlPoint1, controlPoint2: outerControlPoint2)
+		let innerControlPoint1 = CGPoint(x: rect.width * 0.8, y: rect.height * 0.8)
+		let innerControlPoint2 = CGPoint(x: rect.width * 0.8, y: rect.height * 0.2)
+		let innerEndPoint = startPoint
+
+		path.addCurve(to: innerEndPoint, controlPoint1: innerControlPoint1, controlPoint2: innerControlPoint2)
+
+		path.close()
+		path.fill()
+
+		return path
 	}
 }

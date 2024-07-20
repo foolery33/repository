@@ -10,85 +10,41 @@ import UIKit
 enum WeatherType: CaseIterable {
 	case clear, clearNight, cloudy, fog, rain, thunderstorm, snow
 
+	var view: ViewAnimatable {
+		switch self {
+		case .clear:
+			ClearWeatherView()
+		case .clearNight:
+			ClearNightWeatherView()
+		case .cloudy:
+			CloudyWeatherView()
+		case .fog:
+			FoggyWeatherView()
+		case .rain:
+			RainyWeatherView()
+		case .thunderstorm:
+			ClearWeatherView()
+		case .snow:
+			SnowyWeatherView()
+		}
+	}
+	
 	var backgroundGradient: CAGradientLayer {
 		switch self {
 		case .clear:
-			CAGradientLayer.AppGradients.makeMultipleColorsGradient(
-				colors: [
-					AppColors.Gradient.Clear.clearPrimary.cgColor,
-					AppColors.Gradient.Clear.clearSecondary.cgColor,
-					AppColors.Gradient.Clear.clearTertiary.cgColor
-				],
-				type: .axial,
-				animated: true
-			)
+			CAGradientLayer.AppGradients.clearWeatherBackground
 		case .clearNight:
-			CAGradientLayer.AppGradients.makeMultipleColorsGradient(
-				colors: [
-					AppColors.Gradient.Night.nightPrimary.cgColor,
-					AppColors.Gradient.Night.nightSecondary.cgColor,
-					AppColors.Gradient.Night.nightTertiary.cgColor
-				], type: .axial
-				, animated: true
-			)
+			CAGradientLayer.AppGradients.clearNightWeatherBackground
 		case .cloudy:
-			CAGradientLayer.AppGradients.makeMultipleColorsGradient(
-				colors: [
-					AppColors.Gradient.Cloudy.cloudyPrimary.cgColor,
-					AppColors.Gradient.Cloudy.cloudySecondary.cgColor,
-					AppColors.Gradient.Cloudy.cloudyTertiary.cgColor
-				],
-				type: .axial,
-				animated: true
-			)
-//		case .hot:
-//			<#code#>
-//		case .windy:
-//			<#code#>
+			CAGradientLayer.AppGradients.cloudyWeatherBackground
 		case .rain:
-			CAGradientLayer.AppGradients.makeMultipleColorsGradient(
-				colors: [
-					AppColors.Gradient.Rainy.rainyPrimary.cgColor,
-					AppColors.Gradient.Rainy.rainySecondary.cgColor,
-					AppColors.Gradient.Rainy.rainyTertiary.cgColor
-				],
-				type: .axial,
-				animated: true
-			)
-//		case .rainbow:
-//			<#code#>
+			CAGradientLayer.AppGradients.rainyWeatherBackground
 		case .fog:
-			CAGradientLayer.AppGradients.makeMultipleColorsGradient(
-				colors: [
-					AppColors.Gradient.Foggy.foggyPrimary.cgColor,
-					AppColors.Gradient.Foggy.foggySecondary.cgColor,
-					AppColors.Gradient.Foggy.foggyTertiary.cgColor
-				],
-				type: .axial,
-				animated: true
-			)
-//		case .cloudy:
-//			<#code#>
+			CAGradientLayer.AppGradients.foggyWeatherBackground
 		case .snow:
-			CAGradientLayer.AppGradients.makeMultipleColorsGradient(
-				colors: [
-					AppColors.Gradient.Snowy.snowyPrimary.cgColor,
-					AppColors.Gradient.Snowy.snowyTertiary.cgColor,
-					AppColors.Gradient.Snowy.snowySecondary.cgColor,
-					AppColors.Gradient.Snowy.snowyTertiary.cgColor
-				],
-				type: .axial,
-				animated: true
-			)
-//		case .hail:
-//			<#code#>
-//		case .thunderstorm:
-//			<#code#>
+			CAGradientLayer.AppGradients.snowyWeatherBackground
 		default:
-			CAGradientLayer.AppGradients.makeTwoColorsGradient(
-				firstColor: AppColors.Gradient.Clear.clearPrimary.cgColor,
-				secondColor: AppColors.Gradient.Clear.clearSecondary.cgColor
-			)
+			CAGradientLayer.AppGradients.clearWeatherBackground
 		}
 	}
 

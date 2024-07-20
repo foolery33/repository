@@ -42,11 +42,7 @@ final class WeatherPickerViewController: UIViewController {
 	private let weatherPickerStackView = UIStackView()
 	private var backgroundGradientView = UIView()
 	private lazy var backgroundGradient = viewModel.weatherType.backgroundGradient
-	private lazy var weatherView: ViewAnimatable? = viewModel.getWeatherView() {
-		didSet {
-			setupWeatherView()
-		}
-	}
+	private lazy var weatherView: ViewAnimatable? = viewModel.weatherType.view
 
 	private func setup() {
 		setupBindings()
@@ -130,8 +126,6 @@ final class WeatherPickerViewController: UIViewController {
 		let newGradientLayer = viewModel.weatherType.backgroundGradient
 
 		let newGradientView = UIView(frame: backgroundGradientView.bounds)
-		newGradientView.isHidden = false
-		newGradientView.backgroundColor = .white
 		newGradientView.layer.addSublayer(newGradientLayer)
 		newGradientLayer.frame = newGradientView.bounds
 
@@ -148,10 +142,8 @@ final class WeatherPickerViewController: UIViewController {
 		guard let selectedSubviews = weatherPickerStackView.arrangedSubviews as? [WeatherPickerElementView] else { return }
 		guard let selectedSubview = selectedSubviews.first(where: { $0.isSelected }), selectedSubview.bounds != .zero else { return }
 
-		weatherPickerScrollView.setContentOffset(
-			CGPoint(x: selectedSubview.frame.minX - 16, y: 0),
-			animated: false
-		)
+		weatherPickerScrollView.scrollRectToVisible(selectedSubview.frame, animated: true)
+		
 		firstDidLayoutSubviewsCall = false
 	}
 }

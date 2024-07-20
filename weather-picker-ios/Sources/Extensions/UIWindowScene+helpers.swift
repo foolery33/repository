@@ -12,4 +12,3 @@ extension UIWindowScene {
 		windows.first { $0.isKeyWindow && $0.isUserInteractionEnabled }
 	}
 }
-

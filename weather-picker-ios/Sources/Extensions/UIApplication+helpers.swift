@@ -16,4 +16,3 @@ extension UIApplication {
 		scene?.sceneKeyWindow?.bounds.size ?? UIScreen.main.bounds.size
 	}
 }
-

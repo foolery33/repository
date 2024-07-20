@@ -24,7 +24,7 @@ extension CAKeyframeAnimation {
 		clockwise: Bool = true,
 		values: [Float],
 		repeatCount: Float = .infinity,
-		shouldRemove: Bool = true
+		shouldRemove: Bool = false
 	) -> CAKeyframeAnimation {
 		let animation = CAKeyframeAnimation(keyPath: keyPath.rawValue)
 
@@ -42,26 +42,6 @@ extension CAKeyframeAnimation {
 		}
 
 		return animation
-	}
-
-	static func makeStarShiningAnimation(duration: CGFloat, clockwise: Bool = true) -> CAAnimationGroup {
-		let animationGroup = CAAnimationGroup()
-		animationGroup.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-		animationGroup.duration = duration
-
-		let rotationAnimation = CAKeyframeAnimation(keyPath: AnimationKeys.transformRotationZ.rawValue)
-
-		let direction: Float = clockwise ? 1.0 : -1.0
-		rotationAnimation.values = [0, direction * Float.pi / 6, 0]
-		rotationAnimation.isAdditive = true
-
-		let scaleAnimation = CAKeyframeAnimation(keyPath: AnimationKeys.transformScale.rawValue)
-		scaleAnimation.values = [0, 1, 0]
-		scaleAnimation.isAdditive = true
-
-
-		animationGroup.animations = [rotationAnimation, scaleAnimation]
-		return animationGroup
 	}
 
 	func updated(duration: CGFloat? = nil,

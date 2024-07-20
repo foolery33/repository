@@ -8,6 +8,6 @@
 import UIKit
 
 protocol ViewAnimatable: UIView {
-	func startAnimation(completion: @escaping (() -> Void))
+	func startAnimation()
 	func stopAnimation(completion: @escaping (() -> Void))
 }
