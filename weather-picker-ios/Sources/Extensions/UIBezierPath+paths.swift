@@ -367,7 +367,6 @@ extension UIBezierPath {
 		let minYOffset: CGFloat = 7
 		let maxYOffset: CGFloat = 20
 		let maxXOffset: CGFloat = rect.width / 4
-		let xOffsetRange = -rect.width / 8...rect.width / 8
 
 		path.move(to: initialPoint)
 
