@@ -85,9 +85,11 @@ extension CloudyWeatherView: ViewAnimatable {
 
 	func stopAnimation(completion: @escaping (() -> Void)) {
 		for cloudView in self.cloudViews {
-			cloudView.stopAnimation {
-				completion()
-			}
+			cloudView.stopAnimation {}
+		}
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+			completion()
 		}
 	}
 }

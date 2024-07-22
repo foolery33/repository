@@ -26,6 +26,7 @@ final class BaseDrawableView: UIView {
 		let bezierPath = UIBezierPath.makePath(by: drawingType, rect: rect)
 		layer.shadowPath = bezierPath.cgPath
 		self.bezierPath = bezierPath
+		onPathReceived?(bezierPath.cgPath)
 	}
 
 	override func layoutSubviews() {
@@ -34,6 +35,9 @@ final class BaseDrawableView: UIView {
 	}
 
 	// MARK: - Public
+
+	var onPathReceived: ((CGPath) -> Void)?
+	var shapeLayer: CAShapeLayer?
 
 	func addGradient(_ gradient: CAGradientLayer) {
 		self.gradient = gradient
@@ -52,10 +56,6 @@ final class BaseDrawableView: UIView {
 		DispatchQueue.main.asyncAfter(deadline: .now() + .random(in: delay...delay)) {
 			self.layer.add(animation.anim, forKey: animation.key)
 		}
-	}
-
-	func addShadow() {
-		layer.shadowPath = bezierPath?.cgPath
 	}
 
 	// MARK: - Private

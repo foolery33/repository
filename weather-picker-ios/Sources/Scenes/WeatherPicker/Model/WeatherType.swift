@@ -23,7 +23,7 @@ enum WeatherType: CaseIterable {
 		case .rain:
 			RainyWeatherView()
 		case .thunderstorm:
-			ClearWeatherView()
+			ThunderstormWeatherView()
 		case .snow:
 			SnowyWeatherView()
 		}
@@ -43,8 +43,8 @@ enum WeatherType: CaseIterable {
 			CAGradientLayer.AppGradients.foggyWeatherBackground
 		case .snow:
 			CAGradientLayer.AppGradients.snowyWeatherBackground
-		default:
-			CAGradientLayer.AppGradients.clearWeatherBackground
+		case .thunderstorm:
+			CAGradientLayer.AppGradients.thunderstormWeatherBackground
 		}
 	}
 

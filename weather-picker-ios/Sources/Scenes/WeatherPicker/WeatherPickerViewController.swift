@@ -71,9 +71,14 @@ final class WeatherPickerViewController: UIViewController {
 		view.addSubview(weatherView)
 		view.bringSubviewToFront(weatherPickerScrollView)
 
-		weatherView.snp.makeConstraints { make in
-			make.edges.equalToSuperview()
-		}
+		weatherView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			weatherView.topAnchor.constraint(equalTo: view.topAnchor),
+			weatherView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			weatherView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			weatherView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+		])
+
 	}
 
 	private func setupWeatherPickerScrollView() {
@@ -82,10 +87,11 @@ final class WeatherPickerViewController: UIViewController {
 
 		view.addSubview(weatherPickerScrollView)
 
-		weatherPickerScrollView.snp.makeConstraints { make in
-			make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
-			make.width.equalToSuperview()
-		}
+		weatherPickerScrollView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			weatherPickerScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+			weatherPickerScrollView.widthAnchor.constraint(equalTo: view.widthAnchor)
+		])
 	}
 
 	private func setupWeatherPickerStackView() {
@@ -109,10 +115,15 @@ final class WeatherPickerViewController: UIViewController {
 
 		weatherPickerScrollView.addSubview(weatherPickerStackView)
 
-		weatherPickerStackView.snp.makeConstraints { make in
-			make.edges.equalToSuperview()
-			make.height.equalToSuperview()
-		}
+		weatherPickerStackView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			weatherPickerStackView.topAnchor.constraint(equalTo: weatherPickerScrollView.topAnchor),
+			weatherPickerStackView.bottomAnchor.constraint(equalTo: weatherPickerScrollView.bottomAnchor),
+			weatherPickerStackView.leadingAnchor.constraint(equalTo: weatherPickerScrollView.leadingAnchor),
+			weatherPickerStackView.trailingAnchor.constraint(equalTo: weatherPickerScrollView.trailingAnchor),
+			weatherPickerStackView.heightAnchor.constraint(equalTo: weatherPickerScrollView.heightAnchor)
+		])
+
 	}
 
 	private func updateView(to weatherView: ViewAnimatable) {

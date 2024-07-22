@@ -17,6 +17,7 @@ enum DrawingType {
 	case sunRay
 	case star
 	case crescentMoon
+	case lightning
 }
 
 extension UIBezierPath {
@@ -42,6 +43,8 @@ extension UIBezierPath {
 			makeStarPath(rect)
 		case .crescentMoon:
 			makeCrescentMoonPath(rect)
+		case .lightning:
+			makeLightningPath(rect)
 		}
 	}
 
@@ -224,7 +227,7 @@ extension UIBezierPath {
 		path.stroke()
 
 		path.lineWidth = 2
-		UIColor.white.setStroke()
+		AppColors.white.setStroke()
 
 		path.stroke()
 		return path
@@ -261,7 +264,7 @@ extension UIBezierPath {
 		combinedPath.append(secondPath)
 
 		combinedPath.lineWidth = 20
-		UIColor.white.setStroke()
+		AppColors.white.setStroke()
 		combinedPath.fill()
 		combinedPath.stroke()
 
@@ -328,6 +331,37 @@ extension UIBezierPath {
 
 		path.close()
 		path.fill()
+
+		return path
+	}
+
+	static private func makeLightningPath(_ rect: CGRect) -> UIBezierPath {
+//		let path = UIBezierPath()
+//
+//		path.move(to: CGPoint(x: rect.width / 2, y: 0))
+//		path.addLine(to: CGPoint(x: 0, y: rect.height * 0.4))
+//		path.addLine(to: CGPoint(x: rect.width, y: rect.height * 0.3))
+//		path.addLine(to: CGPoint(x: rect.width * 0.1, y: rect.height))
+//
+//		return path
+		let path = UIBezierPath()
+
+		// Начальная точка сверху по центру
+		var currentPoint = CGPoint(x: rect.width / 2, y: 0)
+		path.move(to: currentPoint)
+
+		while currentPoint.y < rect.height {
+			// Генерация случайного смещения по X и фиксированного смещения по Y
+			let randomXOffset = CGFloat(arc4random_uniform(UInt32(rect.width / 4))) - rect.width / 8
+			let yOffset: CGFloat = .random(in: 7...20)
+
+			// Новая точка
+			let newPoint = CGPoint(x: currentPoint.x + randomXOffset, y: currentPoint.y + yOffset)
+			path.addLine(to: newPoint)
+
+			// Обновляем текущую точку
+			currentPoint = newPoint
+		}
 
 		return path
 	}

@@ -1,23 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "blizzard" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Blizzard"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Метель"
-          }
-        }
-      }
-    },
     "clear" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -69,23 +52,6 @@
         }
       }
     },
-    "cloudyNight" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cloudy (night)"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Облачно (ночь)"
-          }
-        }
-      }
-    },
     "fog" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -103,57 +69,6 @@
         }
       }
     },
-    "hail" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hail"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Град"
-          }
-        }
-      }
-    },
-    "heavyRain" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Heavy rain"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ливень"
-          }
-        }
-      }
-    },
-    "partlyCloudy" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partly cloudy"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Частично облачно"
-          }
-        }
-      }
-    },
     "rain" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -167,23 +82,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дождь"
-          }
-        }
-      }
-    },
-    "rainNight" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rain (night)"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Дождь (ночь)"
           }
         }
       }
@@ -218,23 +116,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Гроза"
-          }
-        }
-      }
-    },
-    "wind" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wind"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ветер"
           }
         }
       }

@@ -44,7 +44,7 @@ final class ClearWeatherView: UIView {
 		sunView.backgroundColor = AppColors.clear
 		sunView.layer.cornerRadius = Constants.sunDiameter / 2
 		sunView.layer.addSublayer(sunGradientLayer)
-		sunView.addShadow(offset: .init(width: -4, height: -4), radius: 30, color: AppColors.Gradient.Sun.sunSecondary, opacity: 1)
+		sunView.addShadow(offset: .init(width: -4, height: -4), radius: 30, color: AppColors.Gradient.View.Sun.sunSecondary, opacity: 1)
 		sunView.translatesAutoresizingMaskIntoConstraints = false
 
 		addSubview(sunView)
@@ -62,7 +62,7 @@ final class ClearWeatherView: UIView {
 			rayView.translatesAutoresizingMaskIntoConstraints = false
 			rayViews.append(rayView)
 			addSubview(rayView)
-			rayView.addShadow(offset: .init(width: 0, height: 30), radius: 20, color: AppColors.Gradient.Sun.sunSecondary)
+			rayView.addShadow(offset: .init(width: 0, height: 30), radius: 20, color: AppColors.Gradient.View.Sun.sunSecondary)
 
 			let angle = CGFloat(i) * (2 * .pi / CGFloat(Constants.numberOfRays))
 

@@ -16,10 +16,10 @@ extension CAGradientLayer {
 		static var sunGradient: CAGradientLayer {
 			makeGradient(
 				colors: [
-					AppColors.Gradient.Sun.sunPrimary.cgColor,
-					AppColors.Gradient.Sun.sunSecondary.cgColor,
-					AppColors.Gradient.Sun.sunTertiary.cgColor,
-					AppColors.Gradient.Sun.sunQuaternary.cgColor,
+					AppColors.Gradient.View.Sun.sunPrimary.cgColor,
+					AppColors.Gradient.View.Sun.sunSecondary.cgColor,
+					AppColors.Gradient.View.Sun.sunTertiary.cgColor,
+					AppColors.Gradient.View.Sun.sunQuaternary.cgColor,
 				],
 				type: .radial,
 				startPoint: CGPoint(x: -0.3, y: 1),
@@ -32,8 +32,8 @@ extension CAGradientLayer {
 		static var sunRayGradient: CAGradientLayer {
 			makeGradient(
 				colors: [
-					AppColors.Gradient.Sun.sunSecondary.cgColor,
-					AppColors.Gradient.Sun.sunQuaternary.cgColor
+					AppColors.Gradient.View.Sun.sunSecondary.cgColor,
+					AppColors.Gradient.View.Sun.sunQuaternary.cgColor
 				],
 				locations: [0, Float(Int.random(in: 20...95)) / 100 as NSNumber, 1],
 				animationDuration: .random(in: 4...10)
@@ -43,8 +43,8 @@ extension CAGradientLayer {
 		static var starGradient: CAGradientLayer {
 			makeGradient(
 				colors: [
-					AppColors.Gradient.Moon.moonSecondary.cgColor,
-					AppColors.Gradient.Moon.moonQuaternary.cgColor
+					AppColors.Gradient.View.Moon.moonSecondary.cgColor,
+					AppColors.Gradient.View.Moon.moonQuaternary.cgColor
 				],
 				locations: [0, 0.5, 1],
 				animationDuration: .random(in: 3...7)
@@ -54,9 +54,9 @@ extension CAGradientLayer {
 		static var moonGradient: CAGradientLayer {
 			makeGradient(
 				colors: [
-					AppColors.Gradient.Moon.moonPrimary.cgColor,
-					AppColors.Gradient.Moon.moonSecondary.cgColor,
-					AppColors.Gradient.Moon.moonTertiary.cgColor
+					AppColors.Gradient.View.Moon.moonPrimary.cgColor,
+					AppColors.Gradient.View.Moon.moonSecondary.cgColor,
+					AppColors.Gradient.View.Moon.moonTertiary.cgColor
 				],
 				startPoint: CGPoint(x: 0, y: 1),
 				endPoint: CGPoint(x: 1, y: 0),
@@ -67,10 +67,10 @@ extension CAGradientLayer {
 		static var cloudGradient: CAGradientLayer {
 			makeGradient(
 				colors: [
-					AppColors.Gradient.Cloud.cloudPrimary.cgColor,
-					AppColors.Gradient.Cloud.cloudSecondary.cgColor,
-					AppColors.Gradient.Cloud.cloudTertiary.cgColor,
-					AppColors.Gradient.Cloud.cloudQuaternary.cgColor
+					AppColors.Gradient.View.Cloud.cloudPrimary.cgColor,
+					AppColors.Gradient.View.Cloud.cloudSecondary.cgColor,
+					AppColors.Gradient.View.Cloud.cloudTertiary.cgColor,
+					AppColors.Gradient.View.Cloud.cloudQuaternary.cgColor
 				],
 				locations: [0, Float(Int.random(in: 30...95)) / 100 as NSNumber, 1],
 				animated: true,
@@ -110,9 +110,9 @@ extension CAGradientLayer {
 		static var raindropGradient: CAGradientLayer {
 			makeGradient(
 				colors: [
-					AppColors.Gradient.Raindrop.raindropPrimary.cgColor,
-					AppColors.Gradient.Raindrop.raindropSecondary.cgColor,
-					AppColors.Gradient.Raindrop.raindropTertiary.cgColor
+					AppColors.Gradient.View.Raindrop.raindropPrimary.cgColor,
+					AppColors.Gradient.View.Raindrop.raindropSecondary.cgColor,
+					AppColors.Gradient.View.Raindrop.raindropTertiary.cgColor
 				],
 				startPoint: CGPoint(x: 0, y: 1),
 				endPoint: CGPoint(x: 1, y: 0),
@@ -123,9 +123,22 @@ extension CAGradientLayer {
 		static var snowdriftGradient: CAGradientLayer {
 			makeGradient(
 				colors: [
-					AppColors.Gradient.Snowdrift.snowdriftPrimary.cgColor,
-					AppColors.Gradient.Snowdrift.snowdriftSecondary.cgColor,
-					AppColors.Gradient.Snowdrift.snowdriftTertiary.cgColor
+					AppColors.Gradient.View.Snowdrift.snowdriftPrimary.cgColor,
+					AppColors.Gradient.View.Snowdrift.snowdriftSecondary.cgColor,
+					AppColors.Gradient.View.Snowdrift.snowdriftTertiary.cgColor
+				],
+				startPoint: CGPoint(x: 0, y: 1),
+				endPoint: CGPoint(x: 1, y: 0),
+				animationDuration: 1
+			)
+		}
+
+		static var raindropDarkGradient: CAGradientLayer {
+			makeGradient(
+				colors: [
+					AppColors.Gradient.View.RaindropDark.raindropDarkPrimary.cgColor,
+					AppColors.Gradient.View.RaindropDark.raindropDarkSecondary.cgColor,
+					AppColors.Gradient.View.RaindropDark.raindropDarkTertiary.cgColor
 				],
 				startPoint: CGPoint(x: 0, y: 1),
 				endPoint: CGPoint(x: 1, y: 0),
@@ -164,50 +177,58 @@ extension CAGradientLayer {
 
 		static var clearWeatherBackground: CAGradientLayer {
 			makeBackgroundGradient(colors: [
-				AppColors.Gradient.Clear.clearPrimary.cgColor,
-				AppColors.Gradient.Clear.clearSecondary.cgColor,
-				AppColors.Gradient.Clear.clearTertiary.cgColor
+				AppColors.Gradient.Background.ClearWeather.clearPrimary.cgColor,
+				AppColors.Gradient.Background.ClearWeather.clearSecondary.cgColor,
+				AppColors.Gradient.Background.ClearWeather.clearTertiary.cgColor
 			])
 		}
 
 		static var clearNightWeatherBackground: CAGradientLayer {
 			makeBackgroundGradient(colors: [
-				AppColors.Gradient.Night.nightPrimary.cgColor,
-				AppColors.Gradient.Night.nightSecondary.cgColor,
-				AppColors.Gradient.Night.nightTertiary.cgColor
+				AppColors.Gradient.Background.ClearNightWeather.clearNightPrimary.cgColor,
+				AppColors.Gradient.Background.ClearNightWeather.clearNightSecondary.cgColor,
+				AppColors.Gradient.Background.ClearNightWeather.clearNightTertiary.cgColor
 			])
 		}
 
 		static var cloudyWeatherBackground: CAGradientLayer {
 			makeBackgroundGradient(colors: [
-				AppColors.Gradient.Cloudy.cloudyPrimary.cgColor,
-				AppColors.Gradient.Cloudy.cloudySecondary.cgColor,
-				AppColors.Gradient.Cloudy.cloudyTertiary.cgColor
+				AppColors.Gradient.Background.CloudyWeather.cloudyPrimary.cgColor,
+				AppColors.Gradient.Background.CloudyWeather.cloudySecondary.cgColor,
+				AppColors.Gradient.Background.CloudyWeather.cloudyTertiary.cgColor
 			])
 		}
 
 		static var rainyWeatherBackground: CAGradientLayer {
 			makeBackgroundGradient(colors: [
-				AppColors.Gradient.Rainy.rainyPrimary.cgColor,
-				AppColors.Gradient.Rainy.rainySecondary.cgColor,
-				AppColors.Gradient.Rainy.rainyTertiary.cgColor
+				AppColors.Gradient.Background.RainyWeather.rainyPrimary.cgColor,
+				AppColors.Gradient.Background.RainyWeather.rainySecondary.cgColor,
+				AppColors.Gradient.Background.RainyWeather.rainyTertiary.cgColor
 			])
 		}
 
 		static var foggyWeatherBackground: CAGradientLayer {
 			makeBackgroundGradient(colors: [
-				AppColors.Gradient.Foggy.foggyPrimary.cgColor,
-				AppColors.Gradient.Foggy.foggySecondary.cgColor,
-				AppColors.Gradient.Foggy.foggyTertiary.cgColor
+				AppColors.Gradient.Background.FoggyWeather.foggyPrimary.cgColor,
+				AppColors.Gradient.Background.FoggyWeather.foggySecondary.cgColor,
+				AppColors.Gradient.Background.FoggyWeather.foggyTertiary.cgColor
 			])
 		}
 
 		static var snowyWeatherBackground: CAGradientLayer {
 			makeBackgroundGradient(colors: [
-				AppColors.Gradient.Snowy.snowyPrimary.cgColor,
-				AppColors.Gradient.Snowy.snowyTertiary.cgColor,
-				AppColors.Gradient.Snowy.snowySecondary.cgColor,
-				AppColors.Gradient.Snowy.snowyTertiary.cgColor
+				AppColors.Gradient.Background.SnowyWeather.snowyPrimary.cgColor,
+				AppColors.Gradient.Background.SnowyWeather.snowyTertiary.cgColor,
+				AppColors.Gradient.Background.SnowyWeather.snowySecondary.cgColor,
+				AppColors.Gradient.Background.SnowyWeather.snowyTertiary.cgColor
+			])
+		}
+
+		static var thunderstormWeatherBackground: CAGradientLayer {
+			makeBackgroundGradient(colors: [
+				AppColors.Gradient.Background.ThunderstormWeather.thunderstormPrimary.cgColor,
+				AppColors.Gradient.Background.ThunderstormWeather.thunderstormSecondary.cgColor,
+				AppColors.Gradient.Background.ThunderstormWeather.thunderstormTertiary.cgColor
 			])
 		}
 

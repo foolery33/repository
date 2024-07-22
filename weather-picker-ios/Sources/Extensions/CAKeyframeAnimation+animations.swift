@@ -15,12 +15,14 @@ extension CAKeyframeAnimation {
 		case transformScale = "transform.scale"
 		case positionY = "position.y"
 		case positionX = "position.x"
+		case opacity = "opacity"
 	}
 
 	static func makeAnimation(
 		keyPath: AnimationKeys,
 		duration: CGFloat,
 		timingFunction: CAMediaTimingFunction = CAMediaTimingFunction(name: .linear),
+		isAdditive: Bool = true,
 		clockwise: Bool = true,
 		values: [Float],
 		repeatCount: Float = .infinity,
@@ -30,7 +32,7 @@ extension CAKeyframeAnimation {
 
 		animation.duration = duration
 		animation.timingFunction = timingFunction
-		animation.isAdditive = true
+		animation.isAdditive = isAdditive
 		animation.repeatCount = repeatCount
 
 		let direction: Float = clockwise ? 1 : -1
@@ -46,6 +48,7 @@ extension CAKeyframeAnimation {
 
 	func updated(duration: CGFloat? = nil,
 				 timingFunction: CAMediaTimingFunction? = nil,
+				 isAdditive: Bool? = nil,
 				 clockwise: Bool? = nil,
 				 values: [Float]? = nil,
 				 repeatCount: Float? = nil,
@@ -59,6 +62,9 @@ extension CAKeyframeAnimation {
 		}
 		if let values {
 			copyAnimation.values = values
+		}
+		if let isAdditive {
+			copyAnimation.isAdditive = isAdditive
 		}
 		if let clockwise {
 			var currentValues: [Float] = []

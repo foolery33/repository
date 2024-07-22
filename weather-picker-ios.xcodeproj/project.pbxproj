@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841A637F2C4CDA5A00ECB1F3 /* ThunderstormWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A637E2C4CDA5A00ECB1F3 /* ThunderstormWeatherView.swift */; };
+		841A63812C4CFFE500ECB1F3 /* Randomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A63802C4CFFE500ECB1F3 /* Randomizable.swift */; };
 		849173852C4699C9003766B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173842C4699C9003766B0 /* AppDelegate.swift */; };
 		849173872C4699C9003766B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173862C4699C9003766B0 /* SceneDelegate.swift */; };
 		8491738E2C4699CA003766B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8491738D2C4699CA003766B0 /* Images.xcassets */; };
@@ -23,7 +25,6 @@
 		849173CC2C46DB85003766B0 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173CB2C46DB85003766B0 /* AppColors.swift */; };
 		849173CE2C46DBB7003766B0 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173CD2C46DBB7003766B0 /* AppImages.swift */; };
 		849173D02C46DDB5003766B0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 849173CF2C46DDB5003766B0 /* Localizable.xcstrings */; };
-		849173D42C46E5C8003766B0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 849173D32C46E5C8003766B0 /* SnapKit */; };
 		849173DA2C46F899003766B0 /* ClearWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173D92C46F899003766B0 /* ClearWeatherView.swift */; };
 		849173DC2C46FAB6003766B0 /* UIView+shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173DB2C46FAB6003766B0 /* UIView+shadow.swift */; };
 		849173E12C471077003766B0 /* ViewAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849173E02C471077003766B0 /* ViewAnimatable.swift */; };
@@ -43,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		841A637E2C4CDA5A00ECB1F3 /* ThunderstormWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThunderstormWeatherView.swift; sourceTree = "<group>"; };
+		841A63802C4CFFE500ECB1F3 /* Randomizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Randomizable.swift; sourceTree = "<group>"; };
 		849173812C4699C9003766B0 /* weather-picker-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "weather-picker-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		849173842C4699C9003766B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849173862C4699C9003766B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,13 +88,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				849173D42C46E5C8003766B0 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		841A637D2C4CDA1D00ECB1F3 /* ThunderstormWeather */ = {
+			isa = PBXGroup;
+			children = (
+				841A637E2C4CDA5A00ECB1F3 /* ThunderstormWeatherView.swift */,
+			);
+			path = ThunderstormWeather;
+			sourceTree = "<group>";
+		};
 		849173782C4699C9003766B0 = {
 			isa = PBXGroup;
 			children = (
@@ -133,9 +143,9 @@
 		849173992C469C4A003766B0 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				849173862C4699C9003766B0 /* SceneDelegate.swift */,
 				849173842C4699C9003766B0 /* AppDelegate.swift */,
 				8491738F2C4699CA003766B0 /* LaunchScreen.storyboard */,
-				849173862C4699C9003766B0 /* SceneDelegate.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -153,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				849173B72C46A04D003766B0 /* Assets */,
-				849173B82C46A05C003766B0 /* Fonts */,
 				849173B92C46A064003766B0 /* Strings */,
 				849173CA2C46DB7D003766B0 /* Enums */,
 			);
@@ -209,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				849173E02C471077003766B0 /* ViewAnimatable.swift */,
+				841A63802C4CFFE500ECB1F3 /* Randomizable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -220,13 +230,6 @@
 				8491738D2C4699CA003766B0 /* Images.xcassets */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		849173B82C46A05C003766B0 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		849173B92C46A064003766B0 /* Strings */ = {
@@ -264,6 +267,7 @@
 		849173C52C46AA85003766B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				841A637D2C4CDA1D00ECB1F3 /* ThunderstormWeather */,
 				8491740C2C4AC58C003766B0 /* SnowyWeather */,
 				849174052C4A3BEF003766B0 /* RainyWeather */,
 				849173F82C4929D2003766B0 /* FoggyWeather */,
@@ -349,7 +353,6 @@
 			);
 			name = "weather-picker-ios";
 			packageProductDependencies = (
-				849173D32C46E5C8003766B0 /* SnapKit */,
 			);
 			productName = "weather-picker-ios";
 			productReference = 849173812C4699C9003766B0 /* weather-picker-ios.app */;
@@ -381,7 +384,6 @@
 			);
 			mainGroup = 849173782C4699C9003766B0;
 			packageReferences = (
-				849173D22C46E5C8003766B0 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 849173822C4699C9003766B0 /* Products */;
 			projectDirPath = "";
@@ -426,6 +428,7 @@
 				849173AD2C469E4E003766B0 /* WeatherPickerViewModel.swift in Sources */,
 				849173DC2C46FAB6003766B0 /* UIView+shadow.swift in Sources */,
 				849173F52C48E385003766B0 /* CloudyWeatherView.swift in Sources */,
+				841A63812C4CFFE500ECB1F3 /* Randomizable.swift in Sources */,
 				849173E12C471077003766B0 /* ViewAnimatable.swift in Sources */,
 				849173E52C47C103003766B0 /* UIApplication+helpers.swift in Sources */,
 				849173E72C47C11B003766B0 /* UIWindowScene+helpers.swift in Sources */,
@@ -433,6 +436,7 @@
 				849173FC2C492F18003766B0 /* FoggyWeatherView.swift in Sources */,
 				849174072C4A3C2C003766B0 /* BaseDrawableView.swift in Sources */,
 				849173CC2C46DB85003766B0 /* AppColors.swift in Sources */,
+				841A637F2C4CDA5A00ECB1F3 /* ThunderstormWeatherView.swift in Sources */,
 				849173B12C469EF2003766B0 /* WeatherPickerCoordinator.swift in Sources */,
 				849173DA2C46F899003766B0 /* ClearWeatherView.swift in Sources */,
 				849173AF2C469E74003766B0 /* WeatherPickerViewController.swift in Sources */,
@@ -656,25 +660,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		849173D22C46E5C8003766B0 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		849173D32C46E5C8003766B0 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 849173D22C46E5C8003766B0 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 849173792C4699C9003766B0 /* Project object */;
 }

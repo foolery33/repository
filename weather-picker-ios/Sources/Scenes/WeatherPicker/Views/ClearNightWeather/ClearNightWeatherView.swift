@@ -48,7 +48,7 @@ final class ClearNightWeatherView: UIView {
 
 	private func setupCrescentMoonView() {
 		crescentMoonView.transform = CGAffineTransform(rotationAngle: Constants.crescentMoonRotationAngle)
-		crescentMoonView.addShadow(offset: .init(width: 0, height: 0), radius: 20, color: AppColors.Gradient.Moon.moonTertiary, opacity: 1)
+		crescentMoonView.addShadow(offset: .init(width: 0, height: 0), radius: 20, color: AppColors.Gradient.View.Moon.moonTertiary, opacity: 1)
 
 		addSubview(crescentMoonView)
 
@@ -105,9 +105,11 @@ extension ClearNightWeatherView: ViewAnimatable {
 
 		for star in starViews {
 			star.layer.removeAnimation(forKey: Constants.starShineAnimationKey)
-			star.stopAnimation {
-				completion()
-			}
+			star.stopAnimation {}
+		}
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+			completion()
 		}
 	}
 }

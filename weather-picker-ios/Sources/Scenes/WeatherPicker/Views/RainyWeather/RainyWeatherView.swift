@@ -47,7 +47,7 @@ final class RainyWeatherView: UIView {
 					height: cloudWidth / 2
 				)
 			)
-			cloud.addShadow(offset: .init(width: 0, height: 0), radius: 10, color: AppColors.Gradient.Rainy.rainyTertiary, opacity: 1)
+			cloud.addShadow(offset: .zero, radius: 10, color: AppColors.Gradient.Background.RainyWeather.rainyTertiary, opacity: 1)
 
 			let isMirrored: Bool = .random()
 			if isMirrored {
@@ -127,14 +127,6 @@ final class RainyWeatherView: UIView {
 			)
 		}
 	}
-
-	private func calculateFinalX(startPoint: CGPoint, angle: CGFloat, finalY: CGFloat) -> CGFloat {
-		return startPoint.y + finalY * sin(angle)
-	}
-
-	private func isForwardCloudAnimationDirection(frame: CGRect) -> Bool {
-		frame.minX < UIApplication.shared.windowSize.width / 2 ? true : false
-	}
 }
 
 // MARK: - ViewAnimatable
@@ -151,14 +143,14 @@ extension RainyWeatherView: ViewAnimatable {
 
 	func stopAnimation(completion: @escaping (() -> Void)) {
 		for cloudView in cloudViews {
-			cloudView.stopAnimation {
-				completion()
-			}
+			cloudView.stopAnimation {}
 		}
 		for raindropView in raindropViews {
-			raindropView.stopAnimation {
-				completion()
-			}
+			raindropView.stopAnimation {}
+		}
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+			completion()
 		}
 	}
 }
@@ -270,11 +262,19 @@ private extension RainyWeatherView {
 	}
 }
 
-// MARK: - Constants
+// MARK: - Constants and helpers
 
 private extension RainyWeatherView {
 	enum Constants {
 		static let cloudCount = 5
 		static let raindropCount = 100
+	}
+
+	private func calculateFinalX(startPoint: CGPoint, angle: CGFloat, finalY: CGFloat) -> CGFloat {
+		return startPoint.y + finalY * sin(angle)
+	}
+
+	private func isForwardCloudAnimationDirection(frame: CGRect) -> Bool {
+		frame.minX < UIApplication.shared.windowSize.width / 2 ? true : false
 	}
 }

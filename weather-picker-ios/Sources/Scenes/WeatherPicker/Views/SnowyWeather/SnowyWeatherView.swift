@@ -125,12 +125,12 @@ extension SnowyWeatherView: ViewAnimatable {
 
 	func stopAnimation(completion: @escaping (() -> Void)) {
 		for snowflakeView in self.snowflakeViews {
-			snowflakeView.stopAnimation {
-				completion()
-			}
+			snowflakeView.stopAnimation {}
 		}
 
-		snowdriftView.stopAnimation {
+		snowdriftView.stopAnimation {}
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 			completion()
 		}
 	}
@@ -173,7 +173,8 @@ private extension SnowyWeatherView {
 
 		let screenSize = UIApplication.shared.windowSize
 		let offset = frame.size.width
-		group.duration = .random(in: 10...30)
+		let duration = Double.random(in: 10...30)
+		group.duration = duration
 
 		let targetPoint = CGPoint(x: .random(in: -screenSize.width / 2...screenSize.width * 3 / 2), y: screenSize.height + offset)
 
@@ -190,7 +191,7 @@ private extension SnowyWeatherView {
 	func snowflakePositionXAnimation(initialX: CGFloat, targetX: CGFloat) -> CAKeyframeAnimation {
 		CAKeyframeAnimation.makeAnimation(
 			keyPath: .positionX,
-			duration: 2,
+			duration: 0,
 			clockwise: targetX > initialX,
 			values: [0, abs(Float(initialX - targetX)) + 30]
 		)
@@ -199,7 +200,7 @@ private extension SnowyWeatherView {
 	func snowflakePositionYAnimation(initialY: CGFloat, targetY: CGFloat) -> CAKeyframeAnimation {
 		CAKeyframeAnimation.makeAnimation(
 			keyPath: .positionY,
-			duration: 2,
+			duration: 0,
 			clockwise: targetY > initialY,
 			values: [0, abs(Float(initialY - targetY)) + 30]
 		)

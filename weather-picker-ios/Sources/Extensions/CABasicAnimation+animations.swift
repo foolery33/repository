@@ -14,6 +14,7 @@ extension CABasicAnimation {
 		case positionY = "position.y"
 		case path = "path"
 		case opacity = "opacity"
+		case strokeEnd = "strokeEnd"
 	}
 
 	static func makeAnimation(
