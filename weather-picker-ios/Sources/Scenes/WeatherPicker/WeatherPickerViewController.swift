@@ -78,7 +78,6 @@ final class WeatherPickerViewController: UIViewController {
 			weatherView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			weatherView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
 		])
-
 	}
 
 	private func setupWeatherPickerScrollView() {
@@ -90,6 +89,7 @@ final class WeatherPickerViewController: UIViewController {
 		weatherPickerScrollView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			weatherPickerScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+			weatherPickerScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			weatherPickerScrollView.widthAnchor.constraint(equalTo: view.widthAnchor)
 		])
 	}

@@ -60,20 +60,12 @@ final class RainyWeatherView: UIView {
 	}
 
 	private func setupRaindropViews() {
-		let screenSize = UIApplication.shared.windowSize
 		for _ in 0..<Constants.raindropCount {
-			let raindropHeight = Double.random(in: 10...40)
 			let raindrop = BaseDrawableView(
 				drawingType: Bool.random() == true ? .raindropFirst : .raindropSecond,
-				frame: CGRect(
-					origin: CGPoint(
-						x: .random(in: 0...screenSize.width),
-						y: screenSize.height * 0.2
-					),
-					size: CGSize(width: raindropHeight / 4, height: raindropHeight)
-				)
+				frame: getRandomRaindropFrame()
 			)
-			raindrop.layer.opacity = 0
+			raindrop.layer.opacity = 1
 			raindrop.transform = CGAffineTransform(rotationAngle: .random(in: -.pi / 18...CGFloat.pi / 18))
 
 			addSubview(raindrop)
@@ -109,21 +101,23 @@ final class RainyWeatherView: UIView {
 
 		for raindropView in raindropViews {
 			raindropView.setAnimations(
-				startAnimations: [(raindropStartOpacityAnimation, UUID().uuidString)],
+				startAnimations: [(raindropStartPositionXAnimation(
+					direction: raindropView.frame.midX > UIApplication.shared.windowSize.width / 2 ? true : false
+				), UUID().uuidString)],
 				stopAnimations: [(raindropStopOpacityAnimation, UUID().uuidString)]
 			)
 
 			raindropView.setDelayedAnimation(
-				(raindropStartMovingAnimation(
-					xOffset: abs(Float(raindropView.frame.midX) - Float(calculateFinalX(
+				(raindropMovingAnimation(
+					xOffset: Float(calculateFinalX(
 						startPoint: raindropView.frame.origin,
-						angle: raindropView.rotationAngleInRadians,
-						finalY: UIApplication.shared.windowSize.height + raindropView.bounds.height
-					))),
+						angle: .pi / 2 - raindropView.rotationAngleInRadians,
+						finalY: UIApplication.shared.windowSize.height - Constants.raindropTopOffset
+					)),
 					raindropHeight: raindropView.bounds.height,
-					clockwise: raindropView.rotationAngleInRadians < 0
+					direction: raindropView.rotationAngleInRadians < 0
 				), UUID().uuidString),
-				delay: Double.random(in: 0...5)
+				delay: Double.random(in: 1...5)
 			)
 		}
 	}
@@ -160,47 +154,51 @@ extension RainyWeatherView: ViewAnimatable {
 private extension RainyWeatherView {
 	// Raindrop
 
-	var raindropStartOpacityAnimation: CABasicAnimation {
-		CABasicAnimation.makeAnimation(
-			keyPath: .opacity,
-			duration: 3,
-			toValue: 1,
+	var raindropStopOpacityAnimation: CAKeyframeAnimation {
+		CAKeyframeAnimation.makeAnimation(
+			keyPath: .transformScale,
+			duration: 0.5,
+			isAdditive: false,
+			values: [1, 0],
 			repeatCount: 1
 		)
 	}
 
-	func raindropStartMovingAnimation(xOffset: Float, raindropHeight: Double, clockwise: Bool) -> CAAnimationGroup {
+	func raindropStartPositionXAnimation(direction: Bool) -> CAKeyframeAnimation {
+		CAKeyframeAnimation.makeAnimation(
+			keyPath: .positionX,
+			duration: 1,
+			direction: direction,
+			values: [Float(UIApplication.shared.windowSize.width), 0],
+			repeatCount: 1
+		)
+	}
+
+	func raindropMovingAnimation(xOffset: Float, raindropHeight: Double, direction: Bool) -> CAAnimationGroup {
 		let group = CAAnimationGroup()
 		let duration: CGFloat = .random(in: 0.3...1.5)
 		group.duration = duration
-		group.animations = [raindropStartPositionYAnimation(raindropHeight: raindropHeight, duration: duration), raindropStartPositionXAnimation(xOffset: xOffset, clockwise: clockwise, duration: duration)]
+		group.animations = [raindropPositionYAnimation(raindropHeight: raindropHeight, duration: duration), raindropPositionXAnimation(xOffset: xOffset, direction: direction, duration: duration)]
 		group.isRemovedOnCompletion = false
 		group.fillMode = .forwards
 		group.repeatCount = .infinity
 		return group
 	}
 
-	func raindropStartPositionYAnimation(raindropHeight: Double, duration: CGFloat) -> CAKeyframeAnimation {
+	func raindropPositionYAnimation(raindropHeight: Double, duration: CGFloat) -> CAKeyframeAnimation {
 		CAKeyframeAnimation.makeAnimation(
 			keyPath: .positionY,
 			duration: duration,
-			values: [0, Float(UIApplication.shared.windowSize.height + raindropHeight)]
+			values: [0, Float(UIApplication.shared.windowSize.height - Constants.raindropTopOffset + raindropHeight)]
 		)
 	}
 
-	func raindropStartPositionXAnimation(xOffset: Float, clockwise: Bool, duration: CGFloat) -> CAKeyframeAnimation {
+	func raindropPositionXAnimation(xOffset: Float, direction: Bool, duration: CGFloat) -> CAKeyframeAnimation {
 		return CAKeyframeAnimation.makeAnimation(
 			keyPath: .positionX,
 			duration: duration,
-			clockwise: clockwise,
+			direction: direction,
 			values: [0, xOffset]
-		)
-	}
-
-	var raindropStopOpacityAnimation: CAAnimation {
-		raindropStartOpacityAnimation.updated(
-			duration: 0.5,
-			toValue: 0
 		)
 	}
 
@@ -210,7 +208,7 @@ private extension RainyWeatherView {
 		CAKeyframeAnimation.makeAnimation(
 			keyPath: .positionY,
 			duration: .random(in: 60...100),
-			clockwise: .random(),
+			direction: .random(),
 			values: [0, 10, 0, -10, 0]
 		)
 	}
@@ -220,7 +218,7 @@ private extension RainyWeatherView {
 			keyPath: .transformScale,
 			duration: 1,
 			timingFunction: CAMediaTimingFunction(name: .easeInEaseOut),
-			clockwise: transform.isIdentity,
+			direction: transform.isIdentity,
 			values: [-0.4, 0, 0.15, 0],
 			repeatCount: 1
 		)
@@ -228,7 +226,7 @@ private extension RainyWeatherView {
 
 	var cloudStopScaleAnimation: CAKeyframeAnimation {
 		cloudStartScaleAnimation.updated(
-			clockwise: transform.isIdentity,
+			direction: transform.isIdentity,
 			values: [0, -0.4]
 		)
 	}
@@ -238,7 +236,7 @@ private extension RainyWeatherView {
 			keyPath: .positionX,
 			duration: 1,
 			timingFunction: CAMediaTimingFunction(name: .easeOut),
-			clockwise: isForwardCloudAnimationDirection(frame: frame),
+			direction: isForwardCloudAnimationDirection(frame: frame),
 			values: [Float(-UIApplication.shared.windowSize.width), -300, -200, -100, -50, -30, -20, -10, -5, 0],
 			repeatCount: 1
 		)
@@ -248,7 +246,7 @@ private extension RainyWeatherView {
 		CAKeyframeAnimation.makeAnimation(
 			keyPath: .positionX,
 			duration: .random(in: 100...200),
-			clockwise: isForwardCloudAnimationDirection(frame: frame),
+			direction: isForwardCloudAnimationDirection(frame: frame),
 			values: [0, 40, 0]
 		)
 	}
@@ -256,7 +254,7 @@ private extension RainyWeatherView {
 	func cloudStopPositionXAnimation(frame: CGRect) -> CAKeyframeAnimation {
 		cloudStartPositionXAnimation(frame: frame).updated(
 			timingFunction: CAMediaTimingFunction(name: .easeInEaseOut),
-			clockwise: .random(),
+			direction: .random(),
 			values: [Float(-UIApplication.shared.windowSize.width - frame.size.width), -300, -200, -100, -50, -30, -20, -10, -5, 0].reversed()
 		)
 	}
@@ -268,13 +266,28 @@ private extension RainyWeatherView {
 	enum Constants {
 		static let cloudCount = 5
 		static let raindropCount = 100
+		static let raindropTopOffset = UIApplication.shared.windowSize.height * 0.2
 	}
 
-	private func calculateFinalX(startPoint: CGPoint, angle: CGFloat, finalY: CGFloat) -> CGFloat {
-		return startPoint.y + finalY * sin(angle)
+	func getRandomRaindropFrame() -> CGRect {
+		let raindropHeight = Double.random(in: 10...40)
+		let screenSize = UIApplication.shared.windowSize
+		return CGRect(
+			origin: CGPoint(
+				x: .random(in: 0...screenSize.width),
+				y: Constants.raindropTopOffset
+			),
+			size: CGSize(width: raindropHeight / 4, height: raindropHeight)
+		)
 	}
 
-	private func isForwardCloudAnimationDirection(frame: CGRect) -> Bool {
+	func calculateFinalX(startPoint: CGPoint, angle: CGFloat, finalY: CGFloat) -> CGFloat {
+		let dx = finalY / tan(angle)
+
+		return angle < .pi / 2 ? dx : -dx
+	}
+
+	func isForwardCloudAnimationDirection(frame: CGRect) -> Bool {
 		frame.minX < UIApplication.shared.windowSize.width / 2 ? true : false
 	}
 }

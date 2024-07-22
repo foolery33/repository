@@ -93,23 +93,6 @@ final class SnowyWeatherView: UIView {
 			]
 		)
 	}
-
-	// TODO: - Переместить
-
-	private func snowflakeEndPoint() -> CGPoint {
-
-		let screenSize = UIApplication.shared.windowSize
-
-		let edge = Int.random(in: 0...2)
-		switch edge {
-		case 0:
-			return CGPoint(x: 0, y: CGFloat.random(in: 40...screenSize.height))
-		case 1:
-			return CGPoint(x: screenSize.width, y: CGFloat.random(in: 40...screenSize.height))
-		default:
-			return CGPoint(x: CGFloat.random(in: 0...screenSize.width), y: screenSize.height)
-		}
-	}
 }
 
 // MARK: - ViewAnimatable
@@ -154,7 +137,7 @@ private extension SnowyWeatherView {
 		CAKeyframeAnimation.makeAnimation(
 			keyPath: .transformRotationZ,
 			duration: .random(in: 2...8),
-			clockwise: .random(),
+			direction: .random(),
 			values: [0, 2 * Float.pi]
 		)
 	}
@@ -192,7 +175,7 @@ private extension SnowyWeatherView {
 		CAKeyframeAnimation.makeAnimation(
 			keyPath: .positionX,
 			duration: 0,
-			clockwise: targetX > initialX,
+			direction: targetX > initialX,
 			values: [0, abs(Float(initialX - targetX)) + 30]
 		)
 	}
@@ -201,7 +184,7 @@ private extension SnowyWeatherView {
 		CAKeyframeAnimation.makeAnimation(
 			keyPath: .positionY,
 			duration: 0,
-			clockwise: targetY > initialY,
+			direction: targetY > initialY,
 			values: [0, abs(Float(initialY - targetY)) + 30]
 		)
 	}
@@ -221,11 +204,25 @@ private extension SnowyWeatherView {
 	}
 }
 
-// MARK: - Constants
+// MARK: - Constants and helpers
 
 private extension SnowyWeatherView {
 	enum Constants {
 		static let snowflakeCount = 100
 		static let showdriftHeightMultiplier = 0.8
+	}
+
+	func snowflakeEndPoint() -> CGPoint {
+		let screenSize = UIApplication.shared.windowSize
+
+		let edge = Int.random(in: 0...2)
+		switch edge {
+		case 0:
+			return CGPoint(x: 0, y: CGFloat.random(in: 40...screenSize.height))
+		case 1:
+			return CGPoint(x: screenSize.width, y: CGFloat.random(in: 40...screenSize.height))
+		default:
+			return CGPoint(x: CGFloat.random(in: 0...screenSize.width), y: screenSize.height)
+		}
 	}
 }

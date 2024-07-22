@@ -23,28 +23,25 @@ final class ClearWeatherView: UIView {
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
-		sunGradientLayer.frame = sunView.bounds
-		sunGradientLayer.cornerRadius = Constants.sunDiameter / 2
 	}
 
 	// MARK: - Private
 
-	private let sunView = UIView()
+	private let sunView = BaseDrawableView(drawingType: .sun)
 	private var rayViews: [BaseDrawableView] = []
-	private let sunGradientLayer = CAGradientLayer.AppGradients.sunGradient
 
 	private func setup() {
 		setupSunView()
 		setupRayViews()
 		setupGradients()
+		setupAnimations()
 		startAnimation()
 	}
 
 	private func setupSunView() {
 		sunView.backgroundColor = AppColors.clear
 		sunView.layer.cornerRadius = Constants.sunDiameter / 2
-		sunView.layer.addSublayer(sunGradientLayer)
-		sunView.addShadow(offset: .init(width: -4, height: -4), radius: 30, color: AppColors.Gradient.View.Sun.sunSecondary, opacity: 1)
+		sunView.addShadow(offset: CGSize(width: -4, height: -4), radius: 30, color: AppColors.Gradient.View.Sun.sunSecondary, opacity: 1)
 		sunView.translatesAutoresizingMaskIntoConstraints = false
 
 		addSubview(sunView)
@@ -62,7 +59,7 @@ final class ClearWeatherView: UIView {
 			rayView.translatesAutoresizingMaskIntoConstraints = false
 			rayViews.append(rayView)
 			addSubview(rayView)
-			rayView.addShadow(offset: .init(width: 0, height: 30), radius: 20, color: AppColors.Gradient.View.Sun.sunSecondary)
+			rayView.addShadow(offset: CGSize(width: 0, height: 30), radius: 20, color: AppColors.Gradient.View.Sun.sunSecondary)
 
 			let angle = CGFloat(i) * (2 * .pi / CGFloat(Constants.numberOfRays))
 
@@ -82,9 +79,17 @@ final class ClearWeatherView: UIView {
 	}
 
 	private func setupGradients() {
+		sunView.addGradient(CAGradientLayer.AppGradients.sunGradient)
+
 		for rayView in rayViews {
 			rayView.addGradient(CAGradientLayer.AppGradients.sunRayGradient)
 		}
+	}
+
+	private func setupAnimations() {
+		sunView.setAnimations(
+			startAnimations: [(sunViewRotationAnimation, UUID().uuidString)]
+		)
 	}
 }
 
@@ -92,7 +97,8 @@ final class ClearWeatherView: UIView {
 
 extension ClearWeatherView: ViewAnimatable {
 	func startAnimation() {
-		sunView.layer.add(sunViewRotationAnimation, forKey: UUID().uuidString)
+		sunView.startAnimation()
+		
 		layer.add(rotationAnimation, forKey: UUID().uuidString)
 		layer.add(startRotationZAnimation, forKey: UUID().uuidString)
 		layer.add(startPositionYAnimation, forKey: UUID().uuidString)

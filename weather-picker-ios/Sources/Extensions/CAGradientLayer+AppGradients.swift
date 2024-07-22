@@ -43,7 +43,7 @@ extension CAGradientLayer {
 		static var starGradient: CAGradientLayer {
 			makeGradient(
 				colors: [
-					AppColors.Gradient.View.Moon.moonSecondary.cgColor,
+					AppColors.Gradient.View.Moon.moonTertiary.cgColor,
 					AppColors.Gradient.View.Moon.moonQuaternary.cgColor
 				],
 				locations: [0, 0.5, 1],
@@ -149,8 +149,8 @@ extension CAGradientLayer {
 		static private func makeGradient(
 			colors: [CGColor],
 			type: CAGradientLayerType = .axial,
-			startPoint: CGPoint = .init(x: 0.5, y: 0),
-			endPoint: CGPoint = .init(x: 0.5, y: 1),
+			startPoint: CGPoint = CGPoint(x: 0.5, y: 0),
+			endPoint: CGPoint = CGPoint(x: 0.5, y: 1),
 			locations: [NSNumber]? = nil,
 			animated: Bool = true,
 			animationDuration: CGFloat = 10

@@ -38,7 +38,7 @@ final class ClearNightWeatherView: UIView {
 			let frame = getRandomStarFrame(starSize: randomSize)
 			let star = BaseDrawableView(drawingType: .star, frame: frame)
 			star.transform = CGAffineTransform(rotationAngle: getRandomStarAngle())
-			star.addShadow(offset: .init(width: 0, height: 0), radius: 10, color: AppColors.white, opacity: 1)
+			star.addShadow(offset: .zero, radius: 10, color: AppColors.white, opacity: 1)
 
 			starViews.append(star)
 			addSubview(star)
@@ -48,7 +48,7 @@ final class ClearNightWeatherView: UIView {
 
 	private func setupCrescentMoonView() {
 		crescentMoonView.transform = CGAffineTransform(rotationAngle: Constants.crescentMoonRotationAngle)
-		crescentMoonView.addShadow(offset: .init(width: 0, height: 0), radius: 20, color: AppColors.Gradient.View.Moon.moonTertiary, opacity: 1)
+		crescentMoonView.addShadow(offset: .zero, radius: 20, color: AppColors.Gradient.View.Moon.moonTertiary, opacity: 1)
 
 		addSubview(crescentMoonView)
 
@@ -75,7 +75,7 @@ final class ClearNightWeatherView: UIView {
 			starView.setAnimations(
 				startAnimations: [
 					(starStartScaleAnimation, UUID().uuidString),
-					(starRotationAnimation(clockwise: isClockwise), UUID().uuidString),
+					(starRotationAnimation(direction: isClockwise), UUID().uuidString),
 					(starShineScaleAnimation, Constants.starShineAnimationKey)
 				],
 				stopAnimations: [
@@ -147,11 +147,11 @@ private extension ClearNightWeatherView {
 		)
 	}
 
-	func starRotationAnimation(clockwise: Bool) -> CAKeyframeAnimation {
+	func starRotationAnimation(direction: Bool) -> CAKeyframeAnimation {
 		CAKeyframeAnimation.makeAnimation(
 			keyPath: .transformRotationZ,
 			duration: .random(in: 30...60),
-			clockwise: clockwise,
+			direction: direction,
 			values: [0, 2 * Float.pi]
 		)
 	}

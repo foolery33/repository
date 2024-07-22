@@ -102,7 +102,7 @@ private extension CloudyWeatherView {
 			keyPath: .transformScale,
 			duration: 1,
 			timingFunction: CAMediaTimingFunction(name: .easeInEaseOut),
-			clockwise: transform.isIdentity,
+			direction: transform.isIdentity,
 			values: [-1, 0, 0.15, 0],
 			repeatCount: 1
 		)
@@ -110,14 +110,14 @@ private extension CloudyWeatherView {
 
 	func cloudStopScaleAnimation(direction: Bool) -> CAKeyframeAnimation {
 		cloudStartScaleAnimation.updated(
-			clockwise: direction,
+			direction: direction,
 			values: [0, 0.3, -1]
 		)
 	}
 
 	func cloudStopPositionXAnimation(direction: Bool) -> CAKeyframeAnimation {
 		cloudStartPositionXAnimation(direction: direction).updated(
-			clockwise: direction,
+			direction: direction,
 			values: [Float(-UIApplication.shared.windowSize.width), -300, -200, -100, -50, -30, -20, -10, -5, 0].reversed()
 		)
 	}
@@ -126,7 +126,7 @@ private extension CloudyWeatherView {
 		CAKeyframeAnimation.makeAnimation(
 			keyPath: .positionY,
 			duration: .random(in: 100...200),
-			clockwise: .random(),
+			direction: .random(),
 			values: [0, dY, 0, -dY, 0]
 		)
 	}
@@ -135,7 +135,7 @@ private extension CloudyWeatherView {
 		CAKeyframeAnimation.makeAnimation(
 			keyPath: .positionX,
 			duration: .random(in: 100...200),
-			clockwise: direction,
+			direction: direction,
 			values: [0, Float(UIApplication.shared.windowSize.width / 2), 0]
 		)
 	}
@@ -145,7 +145,7 @@ private extension CloudyWeatherView {
 			keyPath: .positionX,
 			duration: 1,
 			timingFunction: CAMediaTimingFunction(name: .easeOut),
-			clockwise: direction,
+			direction: direction,
 			values: [Float(-2 * UIApplication.shared.windowSize.width), -300, -200, -100, -50, -30, -20, -10, -5, 0],
 			repeatCount: 1
 		)

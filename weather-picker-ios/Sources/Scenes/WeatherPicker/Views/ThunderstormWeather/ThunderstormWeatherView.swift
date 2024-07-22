@@ -93,14 +93,14 @@ final class ThunderstormWeatherView: UIView {
 			)
 
 			raindropView.setDelayedAnimation(
-				(raindropStartMovingAnimation(
+				(raindropMovingAnimation(
 					xOffset: Float(calculateFinalX(
 						startPoint: raindropView.frame.origin,
 						angle: .pi / 2 - raindropView.rotationAngleInRadians,
 						finalY: UIApplication.shared.windowSize.height
 					)),
 					raindropHeight: raindropView.bounds.height,
-					clockwise: raindropView.rotationAngleInRadians < 0
+					direction: raindropView.rotationAngleInRadians < 0
 				), UUID().uuidString),
 				delay: Double.random(in: 1...5)
 			)
@@ -206,18 +206,18 @@ private extension ThunderstormWeatherView {
 
 	// Raindrop
 
-	func raindropStartMovingAnimation(xOffset: Float, raindropHeight: Double, clockwise: Bool) -> CAAnimationGroup {
+	func raindropMovingAnimation(xOffset: Float, raindropHeight: Double, direction: Bool) -> CAAnimationGroup {
 		let group = CAAnimationGroup()
 		let duration: CGFloat = .random(in: 0.3...0.9)
 		group.duration = duration
-		group.animations = [raindropStartPositionYAnimation(raindropHeight: raindropHeight, duration: duration), raindropStartPositionXAnimation(xOffset: xOffset, clockwise: clockwise, duration: duration)]
+		group.animations = [raindropPositionYAnimation(raindropHeight: raindropHeight, duration: duration), raindropPositionXAnimation(xOffset: xOffset, direction: direction, duration: duration)]
 		group.isRemovedOnCompletion = false
 		group.fillMode = .forwards
 		group.repeatCount = .infinity
 		return group
 	}
 
-	func raindropStartPositionYAnimation(raindropHeight: Double, duration: CGFloat) -> CAKeyframeAnimation {
+	func raindropPositionYAnimation(raindropHeight: Double, duration: CGFloat) -> CAKeyframeAnimation {
 		CAKeyframeAnimation.makeAnimation(
 			keyPath: .positionY,
 			duration: duration,
@@ -225,11 +225,11 @@ private extension ThunderstormWeatherView {
 		)
 	}
 
-	func raindropStartPositionXAnimation(xOffset: Float, clockwise: Bool, duration: CGFloat) -> CAKeyframeAnimation {
+	func raindropPositionXAnimation(xOffset: Float, direction: Bool, duration: CGFloat) -> CAKeyframeAnimation {
 		CAKeyframeAnimation.makeAnimation(
 			keyPath: .positionX,
 			duration: duration,
-			clockwise: clockwise,
+			direction: direction,
 			values: [0, xOffset]
 		)
 	}
@@ -238,7 +238,7 @@ private extension ThunderstormWeatherView {
 		CAKeyframeAnimation.makeAnimation(
 			keyPath: .positionX,
 			duration: 1,
-			clockwise: direction,
+			direction: direction,
 			values: [0, Float(UIApplication.shared.windowSize.width)],
 			repeatCount: 1
 		)
@@ -275,7 +275,7 @@ private extension ThunderstormWeatherView {
 		)
 	}
 
-	private func calculateFinalX(startPoint: CGPoint, angle: CGFloat, finalY: CGFloat) -> CGFloat {
+	func calculateFinalX(startPoint: CGPoint, angle: CGFloat, finalY: CGFloat) -> CGFloat {
 		let dx = finalY / tan(angle)
 
 		return angle < .pi / 2 ? dx : -dx

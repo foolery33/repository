@@ -23,7 +23,7 @@ extension CAKeyframeAnimation {
 		duration: CGFloat,
 		timingFunction: CAMediaTimingFunction = CAMediaTimingFunction(name: .linear),
 		isAdditive: Bool = true,
-		clockwise: Bool = true,
+		direction: Bool = true,
 		values: [Float],
 		repeatCount: Float = .infinity,
 		shouldRemove: Bool = false
@@ -35,7 +35,7 @@ extension CAKeyframeAnimation {
 		animation.isAdditive = isAdditive
 		animation.repeatCount = repeatCount
 
-		let direction: Float = clockwise ? 1 : -1
+		let direction: Float = direction ? 1 : -1
 		animation.values = values.map { direction * $0 }
 
 		if !shouldRemove {
@@ -49,7 +49,7 @@ extension CAKeyframeAnimation {
 	func updated(duration: CGFloat? = nil,
 				 timingFunction: CAMediaTimingFunction? = nil,
 				 isAdditive: Bool? = nil,
-				 clockwise: Bool? = nil,
+				 direction: Bool? = nil,
 				 values: [Float]? = nil,
 				 repeatCount: Float? = nil,
 				 shouldRemove: Bool? = nil) -> CAKeyframeAnimation {
@@ -66,7 +66,7 @@ extension CAKeyframeAnimation {
 		if let isAdditive {
 			copyAnimation.isAdditive = isAdditive
 		}
-		if let clockwise {
+		if let direction {
 			var currentValues: [Float] = []
 			if let values {
 				currentValues = values
@@ -75,7 +75,7 @@ extension CAKeyframeAnimation {
 					currentValues = safeValues
 				}
 			}
-			let direction: Float = clockwise ? 1.0 : -1.0
+			let direction: Float = direction ? 1.0 : -1.0
 			copyAnimation.values = currentValues.map { direction * $0 }
 		}
 		if let repeatCount {
